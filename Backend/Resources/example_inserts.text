@@ -1,0 +1,102 @@
+-- Populate Users Table
+INSERT INTO Users (username, email, password_hash, created_at, updated_at)
+VALUES
+    ('user1', 'user1@example.com', 'password1', NOW(), NOW()),
+    ('user2', 'user2@example.com', 'password2', NOW(), NOW()),
+    ('user3', 'user3@example.com', 'password3', NOW(), NOW());
+
+-- Populate Categories Table
+INSERT INTO Categories (name, created_at, updated_at)
+VALUES
+    ('Electronics', NOW(), NOW()),
+    ('Clothing', NOW(), NOW()),
+    ('Books', NOW(), NOW());
+
+-- Populate     Products Table
+INSERT INTO Products (name, description, price, category_id, image_url, created_at, updated_at)
+VALUES
+    ('Smartphone', 'High-end smartphone with latest features.', 999.99, 1, 'https://example.com/smartphone.jpg', NOW(), NOW()),
+    ('T-shirt', 'Comfortable cotton t-shirt available in various colors.', 19.99, 2, 'https://example.com/tshirt.jpg', NOW(), NOW()),
+    ('Java Programming Book', 'Comprehensive guide to Java programming language.', 49.99, 3, 'https://example.com/java_book.jpg', NOW(), NOW());
+
+-- Populate Reviews Table
+INSERT INTO Reviews (user_id, product_id, rating, comment, created_at, updated_at)
+VALUES
+    (1, 1, 5, 'Great phone, highly recommended!', NOW(), NOW()),
+    (2, 2, 4, 'Nice t-shirt, fits well.', NOW(), NOW()),
+    (3, 3, 5, 'Excellent book for learning Java.', NOW(), NOW());
+
+-- Populate Wishlist Table
+INSERT INTO Wishlist (user_id, product_id, created_at, updated_at)
+VALUES
+    (1, 2, NOW(), NOW()),
+    (2, 1, NOW(), NOW()),
+    (3, 3, NOW(), NOW());
+
+-- Populate Basket Table
+INSERT INTO Basket (user_id, product_id, quantity, created_at, updated_at)
+VALUES
+    (1, 1, 1, NOW(), NOW()),
+    (2, 2, 2, NOW(), NOW()),
+    (3, 3, 1, NOW(), NOW());
+
+-- Populate Orders Table
+INSERT INTO Orders (user_id, total_amount, order_date, status, created_at, updated_at)
+VALUES
+    (1, 999.99, NOW(), 'completed', NOW(), NOW()),
+    (2, 39.98, NOW(), 'pending', NOW(), NOW()),
+    (3, 49.99, NOW(), 'shipped', NOW(), NOW());
+
+-- Populate Order_Items Table
+INSERT INTO Order_Items (order_id, product_id, quantity, unit_price, created_at, updated_at)
+VALUES
+    (1, 1, 1, 999.99, NOW(), NOW()),
+    (2, 2, 2, 19.99, NOW(), NOW()),
+    (3, 3, 1, 49.99, NOW(), NOW());
+
+-- Populate Payments Table
+INSERT INTO Payments (order_id, payment_method, amount, transaction_id, payment_date, created_at, updated_at)
+VALUES
+    (1, 'Credit Card', 999.99, 'txn123456', NOW(), NOW(), NOW()),
+    (2, 'PayPal', 39.98, 'txn789012', NOW(), NOW(), NOW()),
+    (3, 'Credit Card', 49.99, 'txn345678', NOW(), NOW(), NOW());
+
+-- Populate Shipping Table
+INSERT INTO Shipping (order_id, address, city, country, postal_code, tracking_number, shipping_date, delivery_date, created_at, updated_at)
+VALUES
+    (1, '123 Main St', 'Anytown', 'USA', '12345', '1234567890', NOW(), NOW(), NOW(), NOW()),
+    (2, '456 Elm St', 'Othertown', 'USA', '67890', '0987654321', NOW(), NOW(), NOW(), NOW()),
+    (3, '789 Oak St', 'Anothertown', 'USA', '54321', '5678901234', NOW(), NOW(), NOW(), NOW());
+
+-- Populate Discounts/Coupons Table
+INSERT INTO Discounts (code, type, value, expiry_date, created_at, updated_at)
+VALUES
+    ('SAVE20', 'percentage', 20, '2024-12-31', NOW(), NOW()),
+    ('FREESHIP', 'fixed amount', 5.99, '2024-12-31', NOW(), NOW());
+
+-- Populate Inventory Table
+INSERT INTO Inventory (product_id, quantity_available, created_at, updated_at)
+VALUES
+    (1, 100, NOW(), NOW()),
+    (2, 50, NOW(), NOW()),
+    (3, 75, NOW(), NOW());
+
+-- Populate Admins Table
+INSERT INTO Admins (username, email, password_hash, created_at, updated_at)
+VALUES
+    ('admin1', 'admin1@example.com', 'adminpassword1', NOW(), NOW()),
+    ('admin2', 'admin2@example.com', 'adminpassword2', NOW(), NOW());
+
+-- Populate Analytics Table
+INSERT INTO Analytics (user_id, action, product_id, timestamp, created_at)
+VALUES
+    (1, 'viewed_product', 1, NOW(), NOW()),
+    (2, 'added_to_cart', 2, NOW(), NOW()),
+    (3, 'completed_order', 3, NOW(), NOW());
+
+-- Populate Translations Table
+INSERT INTO Translations (key, language_code, value, created_at, updated_at)
+VALUES
+    ('welcome_message', 'en', 'Welcome to our webshop!', NOW(), NOW()),
+    ('welcome_message', 'fr', 'Bienvenue dans notre magasin en ligne!', NOW(), NOW()),
+    ('welcome_message', 'es', '¡Bienvenido a nuestra tienda en línea!', NOW(), NOW());

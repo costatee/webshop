@@ -1,0 +1,12 @@
+to check connection with sequalize and db
+
+// const connection_testing = async () => {
+//   let email = "pepe@pepe.com"
+//   try {
+//     // Test the connection by authenticating
+//     await sequelize.authenticate();
+//     console.log('Connection has been established successfully.');
+//   } catch (error) {
+//     console.error('Unable to connect to the database:', error);
+//   }
+// };
