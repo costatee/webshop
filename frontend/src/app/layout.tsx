@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { poppins } from "../app/ui/fonts";
+import { BasketProvider } from "./lib/BasketContext";
 
 export const metadata: Metadata = {
   title: "Order Your Favourites Online",
@@ -16,7 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={poppins.className}>
+        <BasketProvider>
+          {children}
+        </BasketProvider>
+      </body>
     </html>
   );
 }
