@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface BasketItem {
   id: string;
@@ -25,7 +25,18 @@ export const useBasket = (): BasketContextType => {
 };
 
 export const BasketProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [basket, setBasket] = useState<BasketItem[]>([]);
+  const [basket, setBasket] = useState<BasketItem[]>(() => {
+    if (typeof window !== 'undefined') {
+      const storedBasket = localStorage.getItem('basket');
+      return storedBasket ? JSON.parse(storedBasket) : [];
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basket));
+  }, [basket]);
+
 
   const addToBasket = (item: BasketItem) => {
     setBasket((prevBasket) => {

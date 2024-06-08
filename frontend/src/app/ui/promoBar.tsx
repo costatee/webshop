@@ -8,11 +8,11 @@ export default function PromoBar() {
             <div className="flex w-full rounded-b-xl items-center justify-between bg-[#FAFAFA] h-12 shadow shadow-slate-200 pl-5">
             <div className="flex items-center">
                 <Image
-                src="/star.png"
-                alt="star"
-                width={20}
-                height={20}
-                className="mr-2"
+                    src="/star.png"
+                    alt="star"
+                    width={20}
+                    height={20}
+                    className="mr-2"
                 />
                 <p className="flex items-center text-sm">
                 Get 5% off your first order, &nbsp;

@@ -78,14 +78,14 @@ export default function MenuBar(): JSX.Element {
                         <Link href="/menu/offers">Offers</Link>
                     </li>
                     <li>
-                        <Link href="/res">Reservations</Link>
+                        <Link href="/reservations">Reservations</Link>
                     </li>
                     <div className="bg-[#03081F] flex items-center justify-center px-6 py-3 rounded-l-[120px] rounded-r-[120px]">
                         <Avatar
                         className="mr-6"
-                        src="user.png"
+                        src="/male_user_icon.png"
                         alt="avatar"
-                        size="md"
+                        size="sm"
                         placeholder={undefined}
                         onPointerEnterCapture={undefined}
                         onPointerLeaveCapture={undefined}

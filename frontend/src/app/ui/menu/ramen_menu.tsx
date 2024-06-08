@@ -13,7 +13,7 @@ const cardData: CardData[] = [
     imageUrl: "/hero_images/hero4.jpg",
     title: "Spicy Prawn Ramen",
     description: "Spicy seafood broth, flame grilled prawns, noodles, soft boiled egg, pak choi, wok broccolini and mangetout.",
-    buttonText: "Add to order",
+    buttonText: "+",
   },
   {
     imageUrl: "/hero_images/hero5.jpg",
@@ -90,7 +90,7 @@ export const AllRamen: React.FC = () => {
 export const TopFiveRamen: React.FC = () => {
     return (
         <>
-            <div className="flex overflow-hidden gap-5 mx-4 my-4">
+            <div className="flex overflow-hidden gap-1 mx-1 my-1">
                 {cardData.slice(0, 5).map((data, index) => (
                     <CardDefault
                         key={index}

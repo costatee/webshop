@@ -8,17 +8,31 @@ import {
   Button,
 } from "@material-tailwind/react";
 import Image from "next/image";
+import { useBasket } from "../lib/BasketContext";
 
 interface CardDefaultProps {
+  id: string;
   imageUrl: string;
   title: string;
   description: string;
+  price: number;
   buttonText: string;
 }
 
-export const CardDefault: React.FC<CardDefaultProps> = ({ imageUrl, title, description, buttonText }) => {
+export const CardDefault: React.FC<CardDefaultProps> = ({ id, imageUrl, title, description, price, buttonText }) => {
+  const { addToBasket } = useBasket();
+
+  const handleAddToBasket = () => {
+    console.log("add to basket");
+    addToBasket({
+      id,
+      title,
+      price,
+      quantity: 1,
+    });
+  };
   return (
-    <Card className="my-2 mx-1 w-96" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+    <Card className="my-2 mx-2 w-96" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
       <CardHeader color="blue-gray" className="mt-4 relative h-56" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         <Image
           src={imageUrl}
@@ -35,8 +49,8 @@ export const CardDefault: React.FC<CardDefaultProps> = ({ imageUrl, title, descr
           {description}
         </Typography>
       </CardBody>
-      <CardFooter className="pt-0" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-        <Button placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{buttonText}</Button>
+      <CardFooter className="block" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+        <Button type="button" onClick={handleAddToBasket} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{buttonText}</Button>
       </CardFooter>
     </Card>
   );

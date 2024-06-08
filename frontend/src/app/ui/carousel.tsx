@@ -30,7 +30,7 @@ export function CarouselDefault() {
               className="mb-12 opacity-80" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
               Everything we do is soaked with the centuries old traditions of Asian cooking. <br></br> We put our heart and soul into every dish, every day.
             </Typography>
-            <div className="flex justify-center gap-2">
+            <div className="flex justify-end gap-2">
               <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 <Link href="/menu">Viev Menu</Link>
               </Button>
