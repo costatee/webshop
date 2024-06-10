@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 3333
 
 # Command to run the app
-CMD [  "npm", "run", "start:migrate:prod" ]
+CMD [  "npm", "run", "start:dev" ]
