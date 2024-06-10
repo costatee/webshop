@@ -1,8 +1,8 @@
 "use client"
 
-import PromoBar from "../ui/promoBar";
+import PromoBar from "../ui/promo-bar";
 import MenuBar from "../ui/menubar";
-import { BasketDisplay } from "../ui/basketDisplay";
+import { BasketDisplay } from "../ui/basket-display";
 
 export default function Basket(): JSX.Element {
 

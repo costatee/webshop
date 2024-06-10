@@ -1,15 +1,16 @@
 import React, { useState, useContext, ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
-import { AuthContext } from '../login/AuthContext';
+import { AuthContext } from '../lib/AuthContext';
 import { Card, Input, Button, Typography } from '@material-tailwind/react';
 import { useRouter } from 'next/navigation';
 
 export function RegisterForm(): JSX.Element {
     const router = useRouter(); 
-    const [contact, setContact] = useState<{ name: string; email: string; password: string }>({
+    const [contact, setContact] = useState<{ name: string; email: string; password: string; rePassword: string }>({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        rePassword: ''
     });
     const [errorMessage, setErrorMessage] = useState<string | null>(null); 
     const { setToken } = useContext(AuthContext);
@@ -26,6 +27,12 @@ export function RegisterForm(): JSX.Element {
         event.preventDefault();
         console.log(contact.name, contact.email, contact.password);
     
+        if (contact.password !== contact.rePassword) {
+            setErrorMessage("Passwords do not match");
+            console.log("passwords do not match");
+            return;
+        }
+
         try {
             const response = await fetch('http://localhost:3001/register', {
                 method: 'POST',
@@ -33,7 +40,8 @@ export function RegisterForm(): JSX.Element {
                 body: JSON.stringify({
                     name: contact.name,
                     email: contact.email,
-                    password: contact.password
+                    password: contact.password,
+                    rePassword: contact.rePassword
                 })
             });
     
@@ -133,15 +141,15 @@ export function RegisterForm(): JSX.Element {
                 crossOrigin={undefined}
             />
             <Typography variant="h6" color="blue-gray" className="-mb-3" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                Re Password
+                Confirm Password
             </Typography>
             <Input
                 type="password"
                 size="lg"
                 placeholder="********"
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                value={contact.password}
-                name="password"
+                value={contact.rePassword}
+                name="rePassword"
                 onChange={handleChange}
                 labelProps={{
                 className: "before:content-none after:content-none",
@@ -166,8 +174,8 @@ export function RegisterForm(): JSX.Element {
                 onPointerEnterCapture={undefined} 
                 onPointerLeaveCapture={undefined}
             >Already have an account?{" "}
-            <Link href="/login" className="font-medium text-gray-900">
-                login
+            <Link href="/login" className="font-medium text-gray-900 opacity-80 hover:opacity-100">
+                Login
             </Link>
             </Typography>
         </form>

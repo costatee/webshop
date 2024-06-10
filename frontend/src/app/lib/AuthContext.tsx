@@ -6,12 +6,14 @@ interface AuthContextType {
   token: string | null;
   setToken: React.Dispatch<React.SetStateAction<string | null>>;
   loading: boolean;
+  logout: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType>({
   token: null,
   setToken: () => {}, // no-op 
   loading: true,
+  logout: () => {}, // no-op
 });
 
 interface AuthProviderProps {
@@ -72,8 +74,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     validateToken();
   }, [token]);
 
+  const logout = () => {
+    setToken(null);
+    localStorage.removeItem("token");
+  };
+
   return (
-    <AuthContext.Provider value={{ token, setToken, loading }}>
+    <AuthContext.Provider value={{ token, setToken, loading, logout }}>
       {children}
     </AuthContext.Provider>
   );

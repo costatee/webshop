@@ -1,6 +1,6 @@
 import React, { useState, useContext, ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
-import { AuthContext } from '../login/AuthContext';
+import { AuthContext } from '../lib/AuthContext';
 import { Card, Input, Button, Typography } from '@material-tailwind/react';
 import { useRouter } from 'next/navigation';
 

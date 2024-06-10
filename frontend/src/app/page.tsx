@@ -1,9 +1,10 @@
 "use client"
 
 import { CarouselDefault } from "./ui/carousel";
-import { TopFiveRamen } from "./ui/menu/ramen_menu";
-import PromoBar from "./ui/promoBar";
+import { TopFiveRamen } from "./ui/menu/ramen-menu";
+import PromoBar from "./ui/promo-bar";
 import MenuBar from "./ui/menubar";
+import { Footer } from "./ui/footer";
 
 export default function Home(): JSX.Element {
 
@@ -34,6 +35,7 @@ export default function Home(): JSX.Element {
         <TopFiveRamen />
       </div>
 
+      <Footer />
     </main>
   );
 }

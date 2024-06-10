@@ -7,6 +7,7 @@ interface BasketItem {
   title: string;
   price: number;
   quantity: number;
+  imageUrl: string;
 }
 
 interface BasketContextType {

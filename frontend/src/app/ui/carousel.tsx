@@ -11,10 +11,9 @@ export function CarouselDefault() {
           src="/hero_images/hero1.jpg"
           alt="image 1"
           className="h-full w-full object-cover"
-          layout="fill" 
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          placeholder="blur"
-          blurDataURL="/hero_images/hero1.jpg"  // let's work on this blur while loading
+          height={300}
+          width={300}
         />
         <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/50">
           <div className="w-3/4 text-center md:w-2/4">
@@ -32,7 +31,7 @@ export function CarouselDefault() {
             </Typography>
             <div className="flex justify-end gap-2">
               <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                <Link href="/menu">Viev Menu</Link>
+                <Link href="/menu">View Menu</Link>
               </Button>
             </div>
           </div>
@@ -43,8 +42,9 @@ export function CarouselDefault() {
           src="/hero_images/hero2.jpg"
           alt="image 2"
           className="h-full w-full object-cover"
-          layout="fill" 
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          height={300}
+          width={300}
         />
         <div className="absolute inset-0 grid h-full w-full items-center bg-black/50">
           <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
@@ -76,8 +76,9 @@ export function CarouselDefault() {
           src="/hero_images/hero3.jpg"
           alt="image 3"
           className="h-full w-full object-cover"
-          layout="fill"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          height={300}
+          width={300}
         />
         <div className="absolute inset-0 grid h-full w-full items-end bg-black/70">
           <div className="w-3/4 pl-12 pb-12 md:w-2/4 md:pl-20 md:pb-20 lg:pl-32 lg:pb-32">
@@ -109,8 +110,9 @@ export function CarouselDefault() {
           src="/hero_images/hero5.jpg"
           alt="image 3"
           className="h-full w-full object-cover"
-          layout="fill"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          height={300}
+          width={300}
         />
         <div className="absolute inset-0 grid h-full w-full items-end bg-black/60">
           <div className="w-3/4 pl-12 pb-12 md:w-2/4 md:pl-20 md:pb-20 lg:pl-32 lg:pb-32">

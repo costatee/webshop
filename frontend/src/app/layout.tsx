@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { poppins } from "../app/ui/fonts";
 import { BasketProvider } from "./lib/BasketContext";
-import { AuthProvider } from "./login/AuthContext";
+import { AuthProvider } from "./lib/AuthContext";
 
 export const metadata: Metadata = {
   title: "Order Your Favourites Online",
