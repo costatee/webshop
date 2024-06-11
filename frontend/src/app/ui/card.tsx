@@ -36,7 +36,7 @@ export const CardDefault: React.FC<CardProps> = ({ id, imageUrl, title, descript
   };
 
   return (
-    <Card className="my-2 mx-2 w-96" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+    <Card className="my-2 mx-2 w-96 sm:w-80" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
       <CardHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} color="blue-gray" className="mt-4 relative h-56">
         <Image
           src={imageUrl}

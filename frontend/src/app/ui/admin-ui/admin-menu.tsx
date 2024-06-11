@@ -2,12 +2,19 @@ import { Button } from "@material-tailwind/react";
 import { Typography } from "@material-tailwind/react";
 import 'material-symbols';
 import Link from "next/link";
+import { useState } from "react";
 
 
 export default function AdminMenu(): JSX.Element {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        localStorage.removeItem("token");
+    }
 
     return (
-        <div className="flex flex-col h-[80vh] justify-start mr-auto my-10 w-auto gap-4">
+        <div className="flex flex-col h-[80vh] justify-start mr-auto my-10 w-auto gap-4 text-black">
             <div className="flex">
                 <span className="material-symbols-outlined mr-4">home</span>
                 <Link href="/admin">
@@ -80,7 +87,8 @@ export default function AdminMenu(): JSX.Element {
                                 variant="outlined"
                                 placeholder={undefined}
                                 onPointerEnterCapture={undefined}
-                                onPointerLeaveCapture={undefined}>
+                                onPointerLeaveCapture={undefined}
+                                onClick={handleLogout}>
                                     Logout
                             </Button>
                     </Typography>

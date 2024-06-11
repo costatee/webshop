@@ -17,7 +17,7 @@ export default function Home(): JSX.Element {
         <CarouselDefault />
       </div>
 
-      <div className="w-full rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 shadow-xl">
+      <div className="w-full rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 shadow-xl text-black">
         <p className="relative w-full text-center text-xl mt-8">
           Top <span className="text-[#FC8A06]">5</span> most popular Ramens
           <br></br>
@@ -26,7 +26,7 @@ export default function Home(): JSX.Element {
         <TopFiveRamen />
       </div>
 
-      <div className="w-full rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 shadow-xl">
+      <div className="w-full rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 shadow-xl text-black">
         <p className="relative w-full text-center text-xl mt-8">
           Top <span className="text-[#FC8A06]">5</span> most popular Sushis
           <br></br>

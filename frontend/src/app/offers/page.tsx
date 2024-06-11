@@ -12,7 +12,7 @@ import OfferCard from "../ui/offers";
 
 export default function Offers(): JSX.Element {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10 px-20">
+    <main className="flex min-h-screen flex-col items-center gap-10 px-20 text-black">
       <PromoBar />
       <MenuBar /> 
 

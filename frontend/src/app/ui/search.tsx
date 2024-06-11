@@ -25,12 +25,10 @@ export default function Search({ placeholder }: { placeholder: string }) {
         Search
       </label>
       <Input
-        className="block w-full rounded-md border border-gray-200 py-2 px-2 text-sm outline-2 placeholder:text-gray-500"
+        className="py-2 px-2 text-sm placeholder:text-gray-500 !border-t-blue-gray-200 focus:!border-t-gray-900"
         placeholder={placeholder}
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchParams.get('query')?.toString()} 
-        onPointerEnterCapture={undefined} 
-        onPointerLeaveCapture={undefined} 
         crossOrigin={undefined}      
       />
     </div>
