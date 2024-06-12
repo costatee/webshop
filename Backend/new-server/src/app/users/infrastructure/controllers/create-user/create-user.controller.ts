@@ -7,7 +7,7 @@ import { CreateUserRequestDTO } from './dtos/users/users.request.dto';
 // import { AllowUnverifiedCompany, AuthGuards } from '../../../../../infrastructure/auth';
 
 @Controller({
-  path: '/register',
+  path: 'register',
   version: '1',
 })
 @ApiTags('users')
