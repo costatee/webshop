@@ -29,8 +29,6 @@ describe('HealthController', () => {
   });
 
   it('should be defined', () => {
-    console.log(controller.check());
-
     expect(controller).toBeDefined();
   });
 
