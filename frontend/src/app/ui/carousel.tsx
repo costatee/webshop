@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function CarouselDefault() {
   return (
-    <Carousel className="rounded-xl" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+    <Carousel className="rounded-xl" loop={true} autoplay={true}>
       <div className="relative h-full w-full">
         <Image
           src="/hero_images/hero1.jpg"
@@ -20,17 +20,17 @@ export function CarouselDefault() {
             <Typography
               variant="h1"
               color="white"
-              className="mb-4 text-3xl md:text-4xl lg:text-5xl"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
+              className="mb-4 text-3xl md:text-4xl lg:text-5xl">
               True Asian Spirit
             </Typography>
             <Typography
               variant="lead"
               color="white"
-              className="mb-12 opacity-80" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
+              className="mb-12 opacity-80">
               Everything we do is soaked with the centuries old traditions of Asian cooking. <br></br> We put our heart and soul into every dish, every day.
             </Typography>
-            <div className="flex justify-end gap-2">
-              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <div className="flex justify-center gap-2">
+              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white">
                 <Link href="/menu">View Menu</Link>
               </Button>
             </div>
@@ -51,20 +51,20 @@ export function CarouselDefault() {
             <Typography
               variant="h1"
               color="white"
-              className="mb-4 text-3xl md:text-4xl lg:text-5xl" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
+              className="mb-4 text-3xl md:text-4xl lg:text-5xl">
               Chicken Ramen
             </Typography>
             <Typography
               variant="lead"
               color="white"
-              className="mb-12 opacity-80 max-w-[50ch]"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
+              className="mb-12 opacity-80 max-w-[50ch]">
               True staple food in any asian market. We put our spin on the broth, meat and noodles. Just how we learned at home. 
             </Typography>
             <div className="flex gap-2">
-              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white">
                 Add to order
               </Button>
-              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white" variant="text" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white" variant="text">
                 <Link href="/menu/ramen">Explore all Ramens</Link>
               </Button>
             </div>
@@ -85,20 +85,20 @@ export function CarouselDefault() {
             <Typography
               variant="h1"
               color="white"
-              className="mb-4 text-3xl md:text-4xl lg:text-5xl" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              className="mb-4 text-3xl md:text-4xl lg:text-5xl">
               Sharing is caring
             </Typography>
             <Typography
               variant="lead"
               color="white"
-              className="mb-12 opacity-85 max-w-[50ch]" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              className="mb-12 opacity-85 max-w-[50ch]">
               Nothing reflects more our traditions than sharing. Sharing our food is our biggest pride. What will you share today? Gyozas or fried chilly squid? Choices.. choices..
             </Typography>
             <div className="flex gap-2">
-              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white">
                 Gyozas
               </Button>
-              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white" variant="text" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white" variant="text">
                 Bites to share
               </Button>
             </div>
@@ -119,20 +119,20 @@ export function CarouselDefault() {
             <Typography
               variant="h1"
               color="white"
-              className="mb-4 text-3xl md:text-4xl lg:text-5xl" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              className="mb-4 text-3xl md:text-4xl lg:text-5xl">
               Pork Donburi
             </Typography>
             <Typography
               variant="lead"
               color="white"
-              className="mb-12 opacity-85" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              className="mb-12 opacity-85">
               Marinated tender pork strips, rice, wok fried vegies, secret sauce. 
             </Typography>
             <div className="flex gap-2">
-              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white">
                 Gyozas
               </Button>
-              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white" variant="text" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+              <Button className="rounded-l-[120px] rounded-r-[120px]" size="lg" color="white" variant="text">
                 Bites to share
               </Button>
             </div>

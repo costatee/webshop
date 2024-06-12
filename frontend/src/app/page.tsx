@@ -5,6 +5,7 @@ import { TopFiveRamen } from "./ui/menu/ramen-menu";
 import PromoBar from "./ui/promo-bar";
 import MenuBar from "./ui/menubar";
 import { Footer } from "./ui/footer";
+import {Typography} from "@material-tailwind/react";
 
 export default function Home(): JSX.Element {
 
@@ -18,20 +19,20 @@ export default function Home(): JSX.Element {
       </div>
 
       <div className="w-full rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 shadow-xl text-black">
-        <p className="relative w-full text-center text-xl mt-8">
+        <Typography variant="lead" className="relative w-full text-center text-xl mt-8">
           Top <span className="text-[#FC8A06]">5</span> most popular Ramens
           <br></br>
           <span className="font-light text-sm">based on your choices</span>
-        </p>
+        </Typography>
         <TopFiveRamen />
       </div>
 
       <div className="w-full rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 shadow-xl text-black">
-        <p className="relative w-full text-center text-xl mt-8">
+        <Typography variant="lead" className="relative w-full text-center text-xl mt-8">
           Top <span className="text-[#FC8A06]">5</span> most popular Sushis
           <br></br>
           <span className="font-light text-sm">based on your choices</span>
-        </p>
+        </Typography>
         <TopFiveRamen />
       </div>
 

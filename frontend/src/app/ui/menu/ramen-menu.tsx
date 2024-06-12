@@ -1,5 +1,6 @@
 // components/CardList.tsx
 import { CardDefault } from '../card';
+import { Carousel } from "@material-tailwind/react";
 
 interface CardData {
   imageUrl: string;
@@ -84,27 +85,29 @@ const cardData: CardData[] = [
 
 export const AllRamen: React.FC = () => {
   return (
-    <div className="flex flex-wrap">
-      {cardData.map((data, index) => (
-        <CardDefault
-            id={''} 
-            price={0}        
-            key={index}
-            imageUrl={data.imageUrl}
-            title={data.title}
-            description={data.description}
-            buttonText={data.buttonText} 
-          />
-      ))}
-    </div>
+    <>
+      <div className="flex flex-wrap gap-2 mx-2 my-2 sm:flex-col sm:items-center md:flex-row md:flex-wrap md:justify-center">
+        {cardData.map((data, index) => (
+          <CardDefault
+              id={''}
+              price={0}
+              key={index}
+              imageUrl={data.imageUrl}
+              title={data.title}
+              description={data.description}
+              buttonText={data.buttonText}
+            />
+        ))}
+      </div>
+    </>
   );
 };
 
 export const TopFiveRamen: React.FC = () => {
     return (
         <>
-            <div className="flex flex-wrap gap-2 mx-2 my-2 sm:flex-col sm:items-center md:flex-row md:flex-wrap md:justify-center">
-                {cardData.slice(0, 3).map((data, index) => (
+            <div className="flex gap-2 mx-2 my-2 sm:flex-col sm:items-center md:flex-row md:flex-wrap md:justify-center">
+                {cardData.slice(0, 5).map((data, index) => (
                     <CardDefault
                       id={''} 
                       price={0}

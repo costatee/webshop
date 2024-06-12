@@ -16,7 +16,7 @@ const currentYear = new Date().getFullYear();
  
 export function Footer() {
   return (
-    <footer className="relative w-full mt-10 pt-10">
+    <footer className="flex w-full mt-10 pt-10">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="mx-auto grid w-full grid-cols-1 gap-8 py-12 md:grid-cols-2 lg:grid-cols-4">
           {SITEMAP.map(({ title, links }, key) => (
@@ -48,8 +48,7 @@ export function Footer() {
             variant="small"
             className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
           >
-            &copy; {currentYear} <Link href="https://material-tailwind.com/">miRestaurant</Link>. All
-            Rights Reserved.
+            &copy; {currentYear} <Link href="https://material-tailwind.com/">miRestaurant</Link>
           </Typography>
           <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
             <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">

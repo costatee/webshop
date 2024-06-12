@@ -20,10 +20,8 @@ export default function Menu(): JSX.Element {
         <div className="w-2/3 mb-3 flex items-center justify-center">
           <Search placeholder="Search for anything" />
         </div>
-        <div className="w-5/6 flex items-center justify-center">
-          <div className="">
-            <AllRamen />
-          </div>
+        <div className="w-full rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 text-black">
+          <AllRamen />
         </div>
       </div>
     </main>
