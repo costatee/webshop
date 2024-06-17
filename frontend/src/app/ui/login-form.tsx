@@ -22,7 +22,6 @@ export function LoginForm(): JSX.Element {
     };
 
     const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
-        console.log("handleLogin");
         event.preventDefault();
         console.log(contact.email, contact.password);
     
@@ -37,6 +36,10 @@ export function LoginForm(): JSX.Element {
             });
     
             if (response.ok) {
+              if (response.statusText === 'admin') {
+                router.push("/admin");
+                console.log("welcome admin");
+              } 
                 console.log("login success");
                 const data = await response.json();
                 setToken(data.response.token); 

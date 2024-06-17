@@ -9,7 +9,7 @@ export default function MenuBar(): JSX.Element {
   const { token, logout } = useContext(AuthContext);
 
   return (
-    <header className="w-full">
+    <header className="w-full w-max-[1440px]">
       <div className="flex items-center justify-between w-full p-4 md:hidden">
         <Typography variant="h1" className="text-2xl font-bold text-black">Restaurant</Typography>
         <button
@@ -68,6 +68,9 @@ export default function MenuBar(): JSX.Element {
           </li>
           <li>
             <Link href="/reservations">Reservations</Link>
+          </li>
+          <li>
+            <Link href="/info">Contact Us</Link>
           </li>
           <div className="bg-[#03081F] flex items-center justify-center px-6 py-3 rounded-full">
             <Avatar

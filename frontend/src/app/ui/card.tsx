@@ -36,8 +36,8 @@ export const CardDefault: React.FC<CardProps> = ({ id, imageUrl, title, descript
   };
 
   return (
-    <Card className="my-2 mx-2 w-96 sm:w-80" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-      <CardHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} color="blue-gray" className="mt-4 relative h-56">
+    <Card className="my-2 mx-2 w-80 sm:w-96 md:w-80 aspect-w16 aspect-h-9" >
+      <CardHeader  color="blue-gray" className="mt-4 relative h-56">
         <Image
           src={imageUrl}
           alt="card-image"
@@ -45,19 +45,19 @@ export const CardDefault: React.FC<CardProps> = ({ id, imageUrl, title, descript
           className="object-cover"
         />
       </CardHeader>
-      <CardBody placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-        <Typography variant="h5" color="blue-gray" className="mb-2" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+      <CardBody >
+        <Typography variant="h5" color="blue-gray" className="mb-2" >
           {title}
         </Typography>
-        <Typography placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+        <Typography >
           {description}
         </Typography>
       </CardBody>
-      <CardFooter className="block" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-        <Typography variant="h6" color="blue-gray" className="mb-2" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+      <CardFooter className="block" >
+        <Typography variant="h6" color="blue-gray" className="mb-2" >
           ${price.toFixed(2)}
         </Typography>
-        <Button type="button" onClick={handleAddToBasket} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{buttonText}</Button>
+        <Button type="button" onClick={handleAddToBasket} >{buttonText}</Button>
       </CardFooter>
     </Card>
   );
