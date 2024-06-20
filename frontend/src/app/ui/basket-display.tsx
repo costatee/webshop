@@ -15,7 +15,7 @@ export const BasketDisplay: React.FC = () => {
 
   if (loading) {
     return (
-      <Typography variant="h1" color="blue-gray" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+      <Typography variant="h1" color="blue-gray">
         Loading...
       </Typography>
     );
@@ -23,12 +23,12 @@ export const BasketDisplay: React.FC = () => {
 
   return ( // continue fixing the horizontal card
     <div className='flex-col w-full items-center justify-center overflow-hidden'>
-      <Typography variant="h3" color="blue-gray" className="mb-4" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+      <Typography variant="h3" color="blue-gray" className="mb-4">
         Basket
       </Typography>
       <div className='flex flex-col mx-2 my-2'>
         {clientBasket.length === 0 ? (
-          <Typography variant="paragraph" color="blue-gray" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+          <Typography variant="paragraph" color="blue-gray">
             Your basket is empty.
           </Typography>
         ) : (

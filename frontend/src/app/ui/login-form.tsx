@@ -61,20 +61,8 @@ export function LoginForm(): JSX.Element {
     };
 
     return (
-      <Card
-        color="transparent"
-        shadow={false}
-        placeholder={undefined}
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      >
-        <Typography
-          variant="h4"
-          color="blue-gray"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
+      <Card color="transparent" shadow={false}>
+        <Typography variant="h4" color="blue-gray">
           Welcome back!
         </Typography>
         <Typography color="gray" className="mt-1 font-normal">
@@ -98,8 +86,6 @@ export function LoginForm(): JSX.Element {
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
               crossOrigin={undefined}
             />
             <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -116,8 +102,6 @@ export function LoginForm(): JSX.Element {
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
               crossOrigin={undefined}
             />
           </div>
@@ -125,14 +109,12 @@ export function LoginForm(): JSX.Element {
             className="mt-6"
             type="submit"
             fullWidth
-            onPointerLeaveCapture={undefined}
           >
             login
           </Button>
           <Typography
             color="gray"
             className="mt-4 text-center font-normal"
-            onPointerLeaveCapture={undefined}
           >
             Don't have an account?{" "}
             <Link href="/register" className="font-medium text-gray-900">

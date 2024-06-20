@@ -3,6 +3,9 @@ const nextConfig = {};
 
 export default nextConfig;
 
+
+  
+
 // export const config = {
 //     reactStrictMode: true,
 //     swcMinify: true,

@@ -17,7 +17,7 @@ export default function PromoBar() {
                     height={20}
                     className="mr-2"
                 /> */}
-                <Typography variant="paragraph" color="blue-gray" className="flex items-center text-sm" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <Typography variant="paragraph" color="blue-gray" className="flex items-center text-sm">
                 ⭐️ Get 5% off your first order, &nbsp;
                 <span className="font-bold text-[#FC8A06] underline">
                     Promo: ORDER5
@@ -32,7 +32,7 @@ export default function PromoBar() {
                 height={20}
                 className="mr-2"
                 />
-                <Typography variant="paragraph" color="blue-gray" className="flex items-center text-sm" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <Typography variant="paragraph" color="blue-gray" className="flex items-center text-sm">
                 Calle Ferenc Puskas 420 10A, 28052, Madrid
                 </Typography>
             </div>
@@ -50,7 +50,7 @@ export default function PromoBar() {
                 </Link>
                 </div>
                 <div>
-                <Typography variant="paragraph" className="text-xs" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>5 items</Typography>
+                <Typography variant="paragraph" className="text-xs">5 items</Typography>
                 </div>
                 <div className="h-10 border-l-2 border-green-300/10"></div>
                 <div>
@@ -84,9 +84,6 @@ export default function PromoBar() {
                     src="/user.png"
                     alt="avatar"
                     size="xs"
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
                 />
                 {/* user image || default image */}
                 <p className="text-sm">{/* account name  */}Naomi</p>

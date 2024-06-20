@@ -38,7 +38,7 @@ export const CardDefault: React.FC<CardProps> = ({ id, imageUrl, title, descript
 
   return (
     <Card className="my-2 mx-2 w-80 sm:w-96 md:w-80 aspect-w16 aspect-h-9" >
-      <Link href={`/product/${title}`}>
+      <Link href={`/menu/${title}`}>
         <CardHeader  color="blue-gray" className="mt-4 relative h-56">
           <Image
             src={imageUrl}
@@ -75,7 +75,7 @@ export const BasketCard: React.FC<CardProps> = ({ id, imageUrl, title, descripti
 
   return (
     <Card className="w-full max-w-[48rem] flex flex-row items-center shadow-lg gap-2 p-4 rounded-xl" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-      <Link href={`/product/${title}`}>
+      <Link href={`/menu/${title}`}>
         <CardHeader
           shadow={false}
           floated={false}

@@ -1,8 +1,10 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
+"use client";
+
+import { GetStaticPaths } from 'next';
 import { Typography, Input, Button } from "@material-tailwind/react";
-import { BBreadcrumbs } from '../ui/breadcrumbs';
+import { BBreadcrumbs } from '../../ui/breadcrumbs';
 import Image from "next/image";
-import { cardData } from '../ui/menu/ramen-menu';
+import { generateStaticParams } from 'src/app/lib/dynamic-page';
 
 interface ProductProps {
   id: string;
@@ -16,8 +18,8 @@ interface ProductProps {
   rating?: number;
 }
 
-const ProductPage = ({ product }: { product: ProductProps }) => {
-  const { id, imageUrl, title, description, price, quantity, buttonText, categories, rating } = product;
+const ProductPage = ({ params }: { params: ProductProps }) => {
+  const { id, imageUrl, title, description, price, quantity, buttonText, categories, rating } = params;
 
   return (
     <main className="flex flex-1 flex-col items-center gap-10 px-20 text-black">
@@ -25,7 +27,7 @@ const ProductPage = ({ product }: { product: ProductProps }) => {
         <BBreadcrumbs />
         <div className="flex flex-col m-2 w-full md:flex-row">
             <div className="w-[50%] flex items-center justify-center">
-                <Image src={imageUrl} alt={title} width={300} height={300} />
+                <Image src={`/${params.imageUrl}`} alt={`${params.title}`} width={300} height={300} />
             </div>
             <div className="w-[50%] flex flex-col items-start justify-start">
                 <Typography variant="h2">{title}</Typography>
@@ -44,28 +46,12 @@ const ProductPage = ({ product }: { product: ProductProps }) => {
 export default ProductPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const products = cardData;
+  const paths = await generateStaticParams();
 
-  const paths = products.map((product) => ({
-    params: { id: product.id },
-  }));
-
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { id } = params!;
-  
-  const product = cardData.find((product) => product.id === id);
-
-  if (!product) {
-    return {
-      notFound: true,
-    };
-  }
-  return {
-    props: {
-      product,
-    },
+  return { 
+    paths: paths.map(path => ({ params: { id: path.id }})), 
+    fallback: false 
   };
 };
+
+
