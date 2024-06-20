@@ -35,6 +35,9 @@ export default function MenuBar(): JSX.Element {
             <li>
               <Link href="/reservations">Reservations</Link>
             </li>
+            <li>
+              <Link href="/info">Contact Us</Link>
+            </li>
             <div className="bg-[#03081F] flex items-center justify-center px-7 py-3 rounded-full">
               <Avatar
                 className="mr-4"

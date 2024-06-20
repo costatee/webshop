@@ -7,7 +7,7 @@ import { BasketDisplay } from "../ui/basket-display";
 export default function Basket(): JSX.Element {
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10 px-20">
+    <main className="flex flex-1 flex-col items-center gap-10 px-20">
       <PromoBar />
       <MenuBar /> 
 

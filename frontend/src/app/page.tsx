@@ -7,7 +7,7 @@ import { Typography} from "@material-tailwind/react";
 export default function Home(): JSX.Element {
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10 pl-20 pr-20 pb-20">
+    <main className="flex flex-1 flex-col items-center gap-10 pl-20 pr-20 pb-20">
 
       <div className="max-w-[1800px] flex overflow-auto bg-[#FBFBFB] border-slate-300/20 h-[500px] round-xl shadow-xl">
         <CarouselDefault />
