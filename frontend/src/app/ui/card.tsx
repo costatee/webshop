@@ -7,7 +7,7 @@ import {
   CardFooter,
   Typography,
   Button,
-  Input,
+  Input
 } from "@material-tailwind/react";
 import Image from "next/legacy/image";
 import Link from "next/link";
@@ -120,23 +120,79 @@ export const BasketCard: React.FC<CardProps> = ({ id, imageUrl, title, descripti
   );
 };
 
+interface CardProps {
+  id: string;
+  imageUrl: string;
+  title: string;
+  description?: string;
+  price: number;
+  buttonText: string;
+  quantity?: number;
+}
 
 export const OfferCard: React.FC<CardProps> = ({ id, imageUrl, title, description, price, quantity }) => {
   const { addToBasket } = useBasket();
 
-  const handleAddToBasket = () => {
-    addToBasket({
-      id,
-      title,
-      price,
-      quantity: 1,
-      imageUrl,
-    });
+  const handleAddOffer = () => {
+    const chooseOne = prompt('Choose one');
+    const chooseTwo = prompt('Choose two');
+    
+    if (chooseOne && chooseTwo) {
+      addToBasket({
+        id,
+        title,
+        price,
+        quantity: 1,
+        imageUrl,
+      });
+      console.log(`Added to basket: ${title}, choices: ${chooseOne}, ${chooseTwo}`);
+    } else {
+      console.log('Offer not added, both choices are required.');
+    }
   };
 
-
   return (
-    <>
-    <h1>Whatever cards</h1></>
-  )
+    <Card className="w-full flex flex-row items-center shadow-lg gap-2 p-4 rounded-xl">
+      <CardHeader
+        shadow={false}
+        floated={false}
+        className="rounded-lg"
+      >
+        <Image
+          src={imageUrl}
+          alt="card-image"
+          className="object-cover rounded-xl"
+          // layout="responsive"
+          width={300}
+          height={200}
+        />
+      </CardHeader>
+      <CardBody className="pl-4">
+        <Typography variant="h6" color="gray" className="uppercase">
+          {title}
+        </Typography>
+        <Typography variant="h4" color="blue-gray" className="mb-2">
+          ${price.toFixed(2)}
+        </Typography>
+        <div className="flex items-center mb-4">
+          <Typography variant="paragraph" color="blue-gray" className="mr-2">
+            Quantity:
+          </Typography>
+          <Input
+            type="number"
+            value={quantity || 1}
+            min="1"
+            className="w-20"
+            onChange={(e) => {}}
+            crossOrigin={undefined}
+          />
+        </div>
+      </CardBody>
+      <CardFooter className="">
+        <Button className="" type="button" color="orange" onClick={handleAddOffer}>
+          Get offer
+        </Button>
+      </CardFooter>
+    </Card>
+  );
 };
