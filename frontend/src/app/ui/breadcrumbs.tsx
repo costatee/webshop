@@ -1,3 +1,5 @@
+"use client";
+
 import { Breadcrumbs } from "@material-tailwind/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

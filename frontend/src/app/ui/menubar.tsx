@@ -9,7 +9,7 @@ export default function MenuBar(): JSX.Element {
   const { token, logout } = useContext(AuthContext);
 
   return (
-    <header className="w-full w-max-[1440px]">
+    <header className="w-full w-max-[1440px] mb-20">
       <div className="flex items-center justify-between w-full p-4 md:hidden">
         <Typography variant="h1" className="text-2xl font-bold text-black">Restaurant</Typography>
         <button

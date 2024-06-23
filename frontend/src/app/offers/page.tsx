@@ -7,12 +7,8 @@ export default function Offers(): JSX.Element {
   return (
     <main className="flex flex-1 flex-col items-center gap-10 px-20 text-black">
       <div className="flex flex-col w-full max-w-7xl rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 px-10">
-        <Typography 
-            variant="h1" 
-            className="relative w-full text-center text-[2rem] my-8" 
-            placeholder={undefined} 
-            onPointerEnterCapture={undefined} 
-            onPointerLeaveCapture={undefined}>Our offers
+        <Typography variant="h1" className="relative w-full text-center text-[2rem] my-8">
+        Offers
         </Typography>
 
         <div className="flex flex-col w-full self-center justify-center gap-10">

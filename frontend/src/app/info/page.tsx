@@ -10,7 +10,7 @@ export default function Info(): JSX.Element {
         <div className="w-full h-[320px] m-1 rounded-xl overflow-hidden">
           <Image
             src="/sushi/sushi2.jpg"
-            alt="info"
+            alt="chef at work"
             // layout="responsive"
             width={1200}
             height={320}

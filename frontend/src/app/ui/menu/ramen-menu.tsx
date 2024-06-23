@@ -10,7 +10,7 @@ interface CardData {
   price: number;
 }
 
-export const cardData: CardData[] = [
+export const ramenMenuData: CardData[] = [
   {
     id: '1',
     imageUrl: "/hero_images/hero4.jpg",
@@ -97,7 +97,7 @@ export const AllRamen: React.FC = () => {
   return (
     <>
       <div className="flex flex-wrap gap-2 mx-2 my-2 sm:flex-col sm:items-center md:flex-row md:flex-wrap md:justify-center">
-        {cardData.map((data, index) => (
+        {ramenMenuData.map((data, index) => (
           <CardDefault
               key={data.id}
               id={data.id}
@@ -117,7 +117,7 @@ export const TopFiveRamen: React.FC = () => {
     return (
         <>
             <div className="flex gap-2 mx-2 my-2 sm:flex-col sm:items-center md:flex-row md:flex-wrap md:justify-center">
-                {cardData.slice(0, 5).map((data, index) => (
+                {ramenMenuData.slice(0, 5).map((data, index) => (
                     <CardDefault
                       key={data.id}
                       id={data.id} 

@@ -1,5 +1,4 @@
 import { Carousel, Typography, Button } from "@material-tailwind/react";
-import type { CarouselProps } from "@material-tailwind/react";
 import Image from "next/image";
 import Link from "next/link";
 
