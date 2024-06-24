@@ -14,7 +14,7 @@ interface NavLinkProps {
 
 const NavLink: React.FC<NavLinkProps> = ({ href, children, className = '' }) => (
   <li className={`px-2 py-2 ${className}`}>
-    <Link href={href}>{children}</Link>
+    <Link href={href}><Typography variant="lead">{children}</Typography></Link>
   </li>
 );
 
@@ -86,9 +86,10 @@ const MenuBar: React.FC = (): JSX.Element => {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center px-4 py-2">
-        <Typography variant="lead" className="hidden lg:blocktext-3xl font-bold text-black">Logo</Typography>
+        <Link href="/">
+          <Typography variant="h1" className="hidden md:block font-bold text-black">Logo</Typography>
+        </Link>
         <ul className="ml-auto flex gap-4 lg:gap-10 md:gap-2 text-lg items-center text-black">
-          <NavLink href="/" className="bg-[#FC8A06] text-white rounded-full">Home</NavLink>
           <NavLink href="/menu">Menu</NavLink>
           <NavLink href="/offers">Offers</NavLink>
           <NavLink href="/reservations">Reservations</NavLink>

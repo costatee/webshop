@@ -17,8 +17,13 @@ COPY . .
 # Generate Prisma Client code
 RUN npx prisma generate
 
+# Build the application
+RUN npm run build
+
+RUN ls -al /app
+
 # Expose the port the app runs on, here, I was using port 3333
 EXPOSE 3333
 
 # Use CMD to ensure the Prisma migration runs before the app starts
-CMD ["sh", "-c", "npx prisma migrate deploy && node main.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main.js"]

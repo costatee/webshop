@@ -4,7 +4,7 @@ services:
     image: postgres:14.5
     restart: always
     environment:
-      POSTGRES_DB: webshop
+      POSTGRES_DB: webshops
       POSTGRES_USER: johndoe 
       POSTGRES_PASSWORD: randompassword
     ports:
@@ -16,6 +16,6 @@ services:
       - "3333:3333"  # Forward the container's port 3333 to the host machine's port 3333 for accessing the backend service
     depends_on:
       - db  # Ensure that the backend service starts after the database service is up and running
-    env_file:
-      - .env  # Load environment variables from the .env file in the current directory
+    # env_file:
+    #   - .env  # Load environment variables from the .env file in the current directory
 
