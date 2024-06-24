@@ -31,7 +31,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setToken(storedToken);
       } else {
         console.error("No token found");
-        // setToken(null);
       }
     } catch (error) {
       console.error("Error getting token from local storage:", error);

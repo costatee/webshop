@@ -13,6 +13,7 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 import { useBasket } from "../lib/BasketContext";
 import { slugify } from "../lib/utils";
+import { CardProps } from "../lib/definitions";
 
 export const CardDefault: React.FC<CardProps> = ({
   id,
@@ -126,16 +127,6 @@ export const BasketCard: React.FC<CardProps> = ({
   );
 };
 
-interface CardProps {
-  id: string;
-  imageUrl: string;
-  title: string;
-  description?: string;
-  price: number;
-  buttonText: string;
-  quantity?: number;
-}
-
 export const OfferCard: React.FC<CardProps> = ({
   id,
   imageUrl,
@@ -167,7 +158,7 @@ export const OfferCard: React.FC<CardProps> = ({
   };
 
   return (
-    <Card className="w-full flex flex-row items-center shadow-lg gap-1 p-1 rounded-xl">
+    <Card className="flex flex-col items-center shadow-lg gap-1 p-1 rounded-xl">
       <Link href={`/menu/${slugify(title)}`} key={id}>
       <CardHeader shadow={false} floated={false} className="rounded-lg">
         <Image

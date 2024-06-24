@@ -1,6 +1,6 @@
 "use client"
 
-import { LoginForm} from "../ui/login-form";
+import LoginForm from "../ui/login-form";
 
 export default function Login(): JSX.Element {
   return (

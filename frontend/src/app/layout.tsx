@@ -17,7 +17,9 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
         <AuthProvider>
           <BasketProvider>
             <AppLayout>
-              {children}
+            <div className="container sm:px-6 lg:px-8">
+                {children}
+              </div>
             </AppLayout>
           </BasketProvider>
         </AuthProvider>

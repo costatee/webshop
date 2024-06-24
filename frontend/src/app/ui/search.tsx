@@ -27,6 +27,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
       <Input
         className="py-2 px-2 text-sm placeholder:text-gray-500 !border-t-blue-gray-200 focus:!border-t-gray-300"
         placeholder={placeholder}
+        type="text"
+        variant='static'
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchParams.get('query')?.toString()} 
         crossOrigin={undefined}      

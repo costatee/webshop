@@ -1,17 +1,67 @@
+"use client";
+
 import { useState, useContext } from 'react';
 import { Avatar, Typography, Button } from '@material-tailwind/react';
 import Link from 'next/link';
 import { AuthContext } from '../lib/AuthContext';
 import 'material-symbols';
 
-export default function MenuBar(): JSX.Element {
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ href, children, className = '' }) => (
+  <li className={`px-2 py-2 ${className}`}>
+    <Link href={href}>{children}</Link>
+  </li>
+);
+
+interface UserSectionProps {
+  token: string | null;
+  logout: () => void;
+}
+
+const UserSection: React.FC<UserSectionProps> = ({ token, logout }) => (
+  <div className="flex items-center justify-center px-4 py-2 rounded-full bg-[#03081F]">
+    <Avatar
+      className="mr-2"
+      src="/male_user_icon.png"
+      alt="avatar"
+      size="sm"
+    />
+    <li className="text-white">
+      {token ? (
+        <Button onClick={logout} className="text-white">Logout</Button>
+      ) : (
+        <Link href="/login">Login/Signup</Link>
+      )}
+    </li>
+  </div>
+);
+
+const AccountMenu: React.FC = () => (
+  <div className="flex items-center justify-center px-4 py-2 rounded-full bg-[#03081F]">
+    <Avatar
+      className="mr-2"
+      src="/male_user_icon.png"
+      alt="avatar"
+      size="sm"
+    />
+    <Link href="/account" className="text-white">Account</Link>
+  </div>
+);
+
+const MenuBar: React.FC = (): JSX.Element => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { token, logout } = useContext(AuthContext);
 
   return (
-    <header className="w-full w-max-[1440px] mb-20">
-      <div className="flex items-center justify-between w-full p-4 md:hidden">
-        <Typography variant="h1" className="text-2xl font-bold text-black">Restaurant</Typography>
+    <header className="w-full max-w-[1440px] mb-1 md:mb-20">
+      {/* Mobile Header */}
+      <div className="flex items-center justify-between w-full md:hidden px-4 py-2">
+        <Typography variant="h1" className="text-2xl font-bold text-black">Logo</Typography>
         <button
           className="flex items-center"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -20,78 +70,34 @@ export default function MenuBar(): JSX.Element {
         </button>
       </div>
 
+      {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="flex flex-col items-center w-full md:hidden bg-gray-100">
-          <ul className="flex flex-col items-center gap-6 py-4 text-black text-lg">
-            <li className="bg-[#FC8A06] text-white px-4 py-2 rounded-full">
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/menu">Menu</Link>
-            </li>
-            <li>
-              <Link href="/offers">Offers</Link>
-            </li>
-            <li>
-              <Link href="/reservations">Reservations</Link>
-            </li>
-            <li>
-              <Link href="/info">Contact Us</Link>
-            </li>
-            <div className="bg-[#03081F] flex items-center justify-center px-7 py-3 rounded-full">
-              <Avatar
-                className="mr-4"
-                src="https://docs.material-tailwind.com/img/face-4.jpg"
-                alt="avatar"
-                size="md"
-              />
-              <li className="text-white">
-                {token ? (
-                  <Button onClick={logout} className="text-white">Logout</Button>
-                ) : (
-                  <Link href="/login">Login/Signup</Link>
-                )}
-              </li>
-            </div>
+        <nav className="flex flex-col items-center w-full md:hidden bg-gray-100 mt-2">
+          <ul className="flex flex-col items-center gap-1 py-4 text-black text-lg">
+            <NavLink href="/" className="bg-[#FC8A06] text-white rounded-full">Home</NavLink>
+            <NavLink href="/menu">Menu</NavLink>
+            <NavLink href="/offers">Offers</NavLink>
+            <NavLink href="/reservations">Reservations</NavLink>
+            <NavLink href="/info">Contact Us</NavLink>
+            <UserSection token={token} logout={logout} />
           </ul>
         </nav>
       )}
 
-      <nav className="hidden md:flex items-center w-full px-4 py-2">
-        <Typography variant="h1" className="text-3xl font-bold text-black">Restaurant</Typography>
-        <ul className="ml-auto flex gap-10 text-lg items-center text-black">
-          <li className="bg-[#FC8A06] text-white px-7 py-2.5 rounded-full">
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/menu">Menu</Link>
-          </li>
-          <li>
-            <Link href="/offers">Offers</Link>
-          </li>
-          <li>
-            <Link href="/reservations">Reservations</Link>
-          </li>
-          <li>
-            <Link href="/info">Contact Us</Link>
-          </li>
-          <div className="bg-[#03081F] flex items-center justify-center px-6 py-3 rounded-full">
-            <Avatar
-              className="mr-4"
-              src="/male_user_icon.png"
-              alt="avatar"
-              size="sm"
-            />
-            <li className="text-white">
-              {token ? (
-                <Button onClick={logout} className="text-white">Logout</Button>
-              ) : (
-                <Link href="/login">Login/Signup</Link>
-              )}
-            </li>
-          </div>
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex items-center px-4 py-2">
+        <Typography variant="lead" className="hidden lg:blocktext-3xl font-bold text-black">Logo</Typography>
+        <ul className="ml-auto flex gap-4 lg:gap-10 md:gap-2 text-lg items-center text-black">
+          <NavLink href="/" className="bg-[#FC8A06] text-white rounded-full">Home</NavLink>
+          <NavLink href="/menu">Menu</NavLink>
+          <NavLink href="/offers">Offers</NavLink>
+          <NavLink href="/reservations">Reservations</NavLink>
+          <NavLink href="/info">Contact Us</NavLink>
+          {token ? <AccountMenu /> : <UserSection token={token} logout={logout} />}
         </ul>
       </nav>
     </header>
   );
 }
+
+export default MenuBar;
