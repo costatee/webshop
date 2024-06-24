@@ -25,7 +25,7 @@ function Navbar() {
                     <li><Link to="/user"><img className="nav_bar_icons" src={userIcon} alt="user_icon"></img></Link></li>
                     <li><Link to="/wishlist"><img className="nav_bar_icons" src={wishlistIcon} alt="wishlist_icon"></img></Link></li>
                     <li><Link to="/cart"><img className="nav_bar_icons" src={cartIcon} alt="basket_icon"></img></Link></li>
-                    {/* <li><input className="search_input_box" placeholder="Search"></input></li> */}
+                    <li><input className="search_input_box" placeholder="Search"></input></li>
                     <li><Link to="/search"><img className="nav_bar_icons" src={searchIcon} alt="search_icon"></img></Link></li>
                 </ul>
             </nav>

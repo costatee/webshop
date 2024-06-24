@@ -72,7 +72,7 @@ app.post("/login", async (req, res) => {
     }
 
     const token = jwt.sign( { email: email },
-      '2344ditrittoui7tut',
+      'process.env.JWT_SECRET',
       {
         expiresIn: "1h",
       }
