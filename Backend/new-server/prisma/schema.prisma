@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  BUYER
+  SELLER
+  MI_USER
+
+  @@map("user_role")
+}
+
+model User {
+  id                     String               @id @default(uuid())
+  email                  String               @unique @db.VarChar(255)
+  password               String
+  role                   String               @default("USER")
+  firstName              String               @map("first_name")
+  lastName               String               @map("last_name")
+  active                 Boolean              @default(true)
+  phoneNumber            String?              @map("phone_number")
+  lastLoginAt            DateTime?            @map("last_login_at")
+  createdAt              DateTime             @default(now()) @map("created_at")
+  updatedAt              DateTime             @updatedAt @map("updated_at")
+  activeCompanyContextId String?              @map("active_company_context_id")
+  activeCompanyContext   CompanyContext?      @relation(fields: [activeCompanyContextId], references: [id])
+  UserCompanyInvites     UserCompanyInvites[]
+
+  @@map("user")
+}
+
+model CompanyContext {
+  id                 String               @id @default(uuid())
+  title              String?              @map("title")
+  phoneNumber        String?              @map("phone_number")
+  phoneNumberPrefix  String?              @map("phone_number_prefix")
+  createdAt          DateTime             @default(now()) @map("created_at")
+  active             Boolean              @default(true)
+  roles              UserRole[]
+  users              User[]
+  UserCompanyInvites UserCompanyInvites[]
+
+  @@map("company_context")
+}
+
+model UserCompanyInvites {
+  id               String         @id @default(uuid())
+  email            String
+  user             User?          @relation(fields: [userId], references: [id])
+  userId           String?        @map("user_id")
+  createdAt        DateTime       @default(now()) @map("created_at")
+  validUntil       DateTime       @map("valid_until")
+  companyContext   CompanyContext @relation(fields: [companyContextId], references: [id], onDelete: Restrict)
+  companyContextId String         @map("company_context_id")
+  roles            UserRole[]
+
+  @@unique([email, companyContextId])
+  @@map("user_company_invites")
+}
