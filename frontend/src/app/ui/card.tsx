@@ -36,7 +36,7 @@ export const CardDefault: React.FC<CardProps> = ({
   };
 
   return (
-    <Card className="my-2 mx-2 w-80 sm:w-96 md:w-80 aspect-w16 aspect-h-9">
+    <Card className="m-2 md:w-[18.2rem] lg:w-96 xl:w-80 snap-start">
       <Link href={`/menu/${slugify(title)}`} key={id}>
         <CardHeader color="blue-gray" className="mt-4 relative h-56">
           <Image
@@ -50,7 +50,7 @@ export const CardDefault: React.FC<CardProps> = ({
           <Typography variant="h5" color="blue-gray" className="mb-2">
             {title}
           </Typography>
-          <Typography variant="paragraph" className="min-h-[5rem]">
+          <Typography variant="paragraph" className="min-h-[5rem] md:min-h-[6.5rem] lg:min-h-[3rem]">
             {description}
           </Typography>
         </CardBody>
@@ -59,7 +59,7 @@ export const CardDefault: React.FC<CardProps> = ({
         <Typography variant="h6" color="blue-gray" className="mb-2">
           ${price.toFixed(2)}
         </Typography>
-        <Button onClick={handleAddToBasket}>
+        <Button fullWidth={true} onClick={handleAddToBasket}>
           {buttonText}
         </Button>
       </CardFooter>
@@ -133,76 +133,55 @@ export const OfferCard: React.FC<CardProps> = ({
   title,
   description,
   price,
-  quantity,
+  buttonText,
 }) => {
   const { addToBasket } = useBasket();
 
-  const handleAddOffer = () => {
-    const chooseOne = prompt("Choose one");
-    const chooseTwo = prompt("Choose two");
-
-    if (chooseOne && chooseTwo) {
-      addToBasket({
-        id,
-        title,
-        price,
-        quantity: 1,
-        imageUrl,
-      });
-      console.log(
-        `Added to basket: ${title}, choices: ${chooseOne}, ${chooseTwo}`
-      );
-    } else {
-      console.log("Offer not added, both choices are required.");
-    }
+  const handleAddToBasket = () => {
+    addToBasket({
+      id,
+      title,
+      price,
+      quantity: 1,
+      imageUrl,
+    });
   };
 
   return (
-    <Card className="flex flex-col items-center shadow-lg gap-1 p-1 rounded-xl">
-      <Link href={`/menu/${slugify(title)}`} key={id}>
-      <CardHeader shadow={false} floated={false} className="rounded-lg">
-        <Image
-          src={imageUrl}
-          alt="card-image"
-          className="object-cover rounded-xl"
-          // layout="responsive"
-          width={300}
-          height={200}
-        />
-      </CardHeader>
-      <CardBody className="pl-1">
-        <Typography variant="h6" color="gray" className="uppercase">
-          {title}
-        </Typography>
-        <Typography variant="h4" color="blue-gray" className="mb-2">
-          ${price.toFixed(2)}
-        </Typography>
-        <div className="flex items-center mb-4">
-          <Typography variant="paragraph" color="blue-gray" className="mr-2">
-            Quantity:
-          </Typography>
-          <Input
-            variant="static"
-            type="number"
-            value={quantity || 1}
-            min="1"
-            className="w-10"
-            onChange={(e) => {}}
-            crossOrigin={undefined}
+    <Card className="m-2 md:w-[18.2rem] lg:w-96 xl:w-80 snap-start">
+      <CardHeader className="mt-4 relative h-80 md:h-64 lg:h-72" floated={true}>
+      <Image
+            src={imageUrl}
+            alt={title}
+            layout="fill"
+            className="object-cover"
           />
+      </CardHeader>
+      <CardBody>
+        <div className="mb-2 flex items-center justify-between">
+          <Typography color="blue-gray" className="font-medium">
+            {title}
+          </Typography>
+          <Typography color="blue-gray" className="font-medium">
+            {`€${price}`}
+          </Typography>
         </div>
+        <Typography
+          variant="small"
+          color="gray"
+          className="font-normal opacity-80 min-h-[5rem] md:min-h-[6rem]"
+        >{description}
+        </Typography>
       </CardBody>
-      </Link>
-      <CardFooter className="ml-auto">
+      <CardFooter className="pt-0">
         <Button
-          className=""
-          type="button"
-          color="orange"
-          onClick={handleAddOffer}
+          fullWidth={true}
+          className="bg-blue-gray-900/10 text-blue-gray-900 hover:border-1 focus:scale-105 focus:shadow-none active:scale-100"
+          onClick={handleAddToBasket}
         >
-          Get offer
+          {buttonText}
         </Button>
       </CardFooter>
     </Card>
-  );
-};
+  )
+}

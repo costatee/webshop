@@ -6,8 +6,8 @@ import Image from "next/image";
 export default function Info(): JSX.Element {
   return (
     <main className="flex flex-1 flex-col items-center gap-10 text-black">
-      <div className="flex flex-col rounded-xl gap-6 px-5 md:px-10">
-        <div className="w-full h-[320px] m-1 rounded-xl overflow-hidden">
+      <div className="flex flex-col rounded-xl gap-6 px-5">
+        <div className="w-full md:h-[340px] m-1 rounded-xl overflow-hidden">
           <Image
             src="/sushi/sushi2.jpg"
             alt="chef at work"
@@ -16,7 +16,7 @@ export default function Info(): JSX.Element {
             height={320}
           />
         </div>
-        <div className="flex flex-col w-full items-start justify-center p-2">
+        <div className="flex flex-col w-full items-start justify-center p-1">
           <Typography variant="lead" className="flex items-center">
             <span className="material-symbols-outlined mr-3">call</span>
             +3468585854

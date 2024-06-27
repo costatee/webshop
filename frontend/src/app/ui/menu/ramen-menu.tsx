@@ -114,20 +114,23 @@ export const AllRamen: React.FC = () => {
 };
 
 export const TopFiveRamen: React.FC = () => {
-    return (
-        <>
-            <div className="flex gap-2 mx-2 my-2 sm:flex-col sm:items-center md:flex-row md:flex-wrap md:justify-center">
-                {ramenMenuData.slice(0, 5).map((data, index) => (
-                    <CardDefault
-                      key={data.id}
-                      id={data.id} 
-                      price={0}
-                      imageUrl={data.imageUrl}
-                      title={data.title}
-                      description={data.description}
-                      buttonText={data.buttonText} 
-                    />
-                ))}
-            </div>
-        </>
-    )};
+  return (
+      <div className="overflow-x-auto flex ml-4 md:ml-5 justify-start items-center snap-x snap-mandatory">
+          <div className="flex w-full">
+              {ramenMenuData.slice(0, 5).map((data) => (
+                  <div key={data.id} className="inline-block w-full md:w-auto flex-shrink-0">
+                      <CardDefault
+                          id={data.id} 
+                          price={0}
+                          imageUrl={data.imageUrl}
+                          title={data.title}
+                          description={data.description}
+                          buttonText={data.buttonText} 
+                      />
+                  </div>
+              ))}
+          </div>
+      </div>
+  );
+};
+

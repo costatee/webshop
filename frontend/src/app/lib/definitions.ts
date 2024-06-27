@@ -16,3 +16,17 @@ export interface ProductProps {
     buttonText: string;
     quantity?: number;
   }
+
+  export interface NavLinkProps {
+    href: string;
+    children: React.ReactNode;
+    className?: string;
+  }
+  
+  export interface UserSectionProps {
+    token: string | null;
+  }
+  export interface MaterialIconProps {
+    iconClass: string;
+    iconTitle: string;
+  }
