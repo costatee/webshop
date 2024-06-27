@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export function CarouselDefault() {
   return (
-    <Carousel className="rounded-xl" loop autoplay>
+    <Carousel className="md:rounded-xl" loop autoplay>
       {/* Slide 1 */}
-      <div className="relative w-full h-80 md:h-96 lg:h-[500px]">
+      <div className="relative w-full h-[28rem] md:h-96 lg:h-[500px]">
         <Image
           src="/hero_images/hero1.jpg"
           alt="image 1"
@@ -41,7 +41,7 @@ export function CarouselDefault() {
       </div>
       
       {/* Slide 2 */}
-      <div className="relative w-full h-80 md:h-96 lg:h-[500px]">
+      <div className="relative w-full h-[28rem] md:h-96 lg:h-[500px]">
         <Image
           src="/hero_images/hero2.jpg"
           alt="image 2"
@@ -78,7 +78,7 @@ export function CarouselDefault() {
       </div>
       
       {/* Slide 3 */}
-      <div className="relative w-full h-80 md:h-96 lg:h-[500px]">
+      <div className="relative w-full h-[28rem] md:h-96 lg:h-[500px]">
         <Image
           src="/hero_images/hero3.jpg"
           alt="image 3"
@@ -113,7 +113,7 @@ export function CarouselDefault() {
       </div>
 
       {/* Slide 4 */}
-      <div className="relative w-full h-80 md:h-96 lg:h-[500px]">
+      <div className="relative w-full h-[28rem] md:h-96 lg:h-[500px]">
         <Image
           src="/hero_images/hero5.jpg"
           alt="image 4"

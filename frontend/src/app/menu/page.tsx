@@ -2,22 +2,24 @@
 
 import { AllRamen } from "../ui/menu/ramen-menu";
 import Search from "../ui/search";
-import { Footer } from "../ui/footer";
 import { AllSushi } from "../ui/menu/sushi-menu";
+import { Suspense } from "react";
 
 export default function Menu(): JSX.Element {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10 px-20 text-black">
-      <div className="flex flex-col max-w-[1800px] rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 px-8">
+    <main className="relative w-full lg:max-w-[1440px]">
+      <div className="w-full flex flex-col rounded-lg md:rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 px-4">
         <p className="relative w-full text-center text-[2rem] mt-8">Our menu</p>
-        <p className="relative w-full text-center font-light text-sm mb-8 opacity-80">
+        <p className="relative w-full text-center font-light text-sm mb-4 md:mb-8 opacity-80">
           crafted with love
         </p>
-        <div className="w-2/3 mb-3 flex items-center justify-center">
-          <Search placeholder="Search for anything" />
+        <div className="w-[90%] md:w-2/3 mb-3 flex items-center justify-center">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Search placeholder="Search for anything" />
+          </Suspense>
         </div>
-        <div className="w-full rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 text-black">
-          <AllRamen />
+        <div className="w-full flex-col md:flex-row bg-[#FAFAFA] items-center justify-center pb-6 text-black">
+            <AllRamen />
           <AllSushi />
         </div>
       </div>
