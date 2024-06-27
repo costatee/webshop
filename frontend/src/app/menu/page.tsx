@@ -3,6 +3,7 @@
 import { AllRamen } from "../ui/menu/ramen-menu";
 import Search from "../ui/search";
 import { AllSushi } from "../ui/menu/sushi-menu";
+import { Suspense } from "react";
 
 export default function Menu(): JSX.Element {
   return (
@@ -13,10 +14,12 @@ export default function Menu(): JSX.Element {
           crafted with love
         </p>
         <div className="w-[90%] md:w-2/3 mb-3 flex items-center justify-center">
-          <Search placeholder="Search for anything" />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Search placeholder="Search for anything" />
+          </Suspense>
         </div>
         <div className="w-full flex-col md:flex-row bg-[#FAFAFA] items-center justify-center pb-6 text-black">
-          <AllRamen />
+            <AllRamen />
           <AllSushi />
         </div>
       </div>

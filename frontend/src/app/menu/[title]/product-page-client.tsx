@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ProductProps } from '../../lib/definitions';
 
 const ProductClient = ({ product }: { product: ProductProps }) => {
-  console.log('product: ===============', product);
+  // console.log('product: ===============', product);
   const { imageUrl, title, description, price, buttonText } = product;
 
   return (
