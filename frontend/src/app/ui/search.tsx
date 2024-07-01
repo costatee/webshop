@@ -1,22 +1,32 @@
-'use client';
-
+import React from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
 import { Input } from '@material-tailwind/react';
+import { ramenMenuData, CardData } from "../ui/menu/ramen-menu";
 
-export default function Search({ placeholder }: { placeholder: string }) {
+interface SearchProps {
+  placeholder: string;
+  onSearch: (searchTerm: string) => void; // Update to accept searchTerm of type string
+}
+
+const Search: React.FC<SearchProps> = ({ placeholder, onSearch }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
   const handleSearch = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);
+
     if (term) {
       params.set('query', term);
     } else {
       params.delete('query');
     }
+
     replace(`${pathname}?${params.toString()}`);
+
+    // Call onSearch with the searchTerm (term)
+    onSearch(term);
   }, 300);
 
   return (
@@ -35,4 +45,6 @@ export default function Search({ placeholder }: { placeholder: string }) {
       />
     </div>
   );
-}
+};
+
+export default Search;
