@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useContext } from 'react';
-import { Avatar, Typography, Button } from '@material-tailwind/react';
+import { Avatar, Typography } from '@material-tailwind/react';
 import Link from 'next/link';
 import { AuthContext } from '../lib/AuthContext';
 import 'material-symbols';
@@ -67,9 +67,15 @@ const MenuBar: React.FC = (): JSX.Element => {
           <Typography variant="h1" className="text-2xl font-bold text-black mr-auto ml-2">Logo</Typography>
         </Link>
         <div className='ml-auto mt-1.5'>
-          <MaterialIcon iconClass='material-symbols-outlined' iconTitle='favorite' />
-          <MaterialIcon iconClass='material-symbols-outlined' iconTitle='person' />
-          <MaterialIcon iconClass='material-symbols-outlined' iconTitle='shopping_cart' />
+          <Link href="/favourites">
+            <MaterialIcon iconClass='material-symbols-outlined' iconTitle='favorite' />
+          </Link>
+          <Link href="/user">
+            <MaterialIcon iconClass='material-symbols-outlined' iconTitle='person' />
+          </Link>
+          <Link href="/basket">
+            <MaterialIcon iconClass='material-symbols-outlined' iconTitle='shopping_cart' />
+          </Link>
           <MaterialIcon iconClass='material-symbols-outlined' iconTitle='search' />
         </div>
       </div>

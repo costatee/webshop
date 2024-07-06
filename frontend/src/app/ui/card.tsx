@@ -15,6 +15,7 @@ import { useBasket } from "../lib/BasketContext";
 import { slugify } from "../lib/utils";
 import { CardProps } from "../lib/definitions";
 
+// Default Vertical Card component
 export const CardDefault: React.FC<CardProps> = ({
   id,
   imageUrl,
@@ -67,6 +68,8 @@ export const CardDefault: React.FC<CardProps> = ({
   );
 };
 
+// Basket Card component
+// Basket Card component
 export const BasketCard: React.FC<CardProps> = ({
   id,
   imageUrl,
@@ -75,8 +78,17 @@ export const BasketCard: React.FC<CardProps> = ({
   price,
   quantity,
 }) => {
+  const { removeFromBasket, updateBasketItemQuantity } = useBasket();
+
   const handleRemoveFromBasket = () => {
-    console.log(id);
+    removeFromBasket(id);
+  };
+
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newQuantity = parseInt(e.target.value, 10);
+    if (newQuantity > 0) {
+      updateBasketItemQuantity(id, newQuantity);
+    }
   };
 
   return (

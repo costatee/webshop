@@ -16,7 +16,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/hero_images/hero4.jpg",
     title: "Spicy Prawn Ramen",
     description: "Spicy seafood broth, flame grilled prawns, noodles, soft boiled egg, pak choi, wok broccolini and mangetout.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 10,
   },
   {
@@ -96,7 +96,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi1.jpg",
     title: "Dragon Roll",
     description: "Shrimp tempura, avocado, eel sauce, topped with spicy tuna and tobiko.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 12,
 },
 {
@@ -104,7 +104,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi7.jpg",
     title: "California Roll",
     description: "Crab meat, avocado, cucumber, and tobiko, wrapped in seaweed and rice.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 8,
 },
 {
@@ -112,7 +112,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi3.jpg",
     title: "Spicy Tuna Roll",
     description: "Fresh tuna, spicy mayo, cucumber, and sesame seeds.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 9,
 },
 {
@@ -120,7 +120,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi4.jpg",
     title: "Rainbow Roll",
     description: "California roll topped with assorted fresh fish: tuna, salmon, yellowtail, and avocado.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 13,
 },
 {
@@ -128,7 +128,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi5.jpg",
     title: "Salmon Nigiri",
     description: "Fresh salmon slices over seasoned sushi rice, garnished with a touch of wasabi.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 7,
 },
 {
@@ -136,7 +136,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi6.jpg",
     title: "Eel Avocado Roll",
     description: "Grilled eel, avocado, cucumber, eel sauce, and sesame seeds.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 10,
 },
 {
@@ -144,7 +144,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi6.jpg",
     title: "Vegetable Roll",
     description: "Cucumber, avocado, carrot, and bell pepper wrapped in seaweed and rice.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 7,
 },
 {
@@ -152,7 +152,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi7.jpg",
     title: "Tempura Shrimp Roll",
     description: "Crispy tempura shrimp, avocado, cucumber, and spicy mayo.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 11,
 },
 {
@@ -160,7 +160,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi3.jpg",
     title: "Philadelphia Roll",
     description: "Smoked salmon, cream cheese, cucumber, and avocado.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 10,
 },
 {
@@ -168,7 +168,7 @@ export const ramenMenuData: CardData[] = [
     imageUrl: "/sushi/sushi4.jpg",
     title: "Spider Roll",
     description: "Soft-shell crab, avocado, cucumber, and spicy mayo, topped with eel sauce.",
-    buttonText: "+",
+    buttonText: "Add to order",
     price: 14,
 }
 ];
@@ -179,7 +179,6 @@ interface AllRamenProps {
 
 export const AllRamen: React.FC<AllRamenProps> = ({ filteredData }) => {
   const menuData = filteredData || ramenMenuData;
-  console.log(menuData);
 
   return (
     <>

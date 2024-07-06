@@ -15,6 +15,7 @@ const LoginForm: React.FC = (): JSX.Element => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null); 
   const { setToken } = useContext(AuthContext);
 
+  // Mock login function
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
     setContact(prevState => ({ ...prevState, [name]: value }));
@@ -23,15 +24,30 @@ const LoginForm: React.FC = (): JSX.Element => {
   const handleLogin = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     console.log(contact.email, contact.password);
-
+  
+    // Define the mock fetch function with appropriate types
+    const mockFetch = async (): Promise<
+      | { ok: true; json: () => Promise<{ response: { token: string }; role: string }> }
+      | { ok: false; status: number; json?: undefined }
+    > => {
+      if (contact.email === 'asd@asd.com' && contact.password === 'asd') {
+        return {
+          ok: true,
+          json: async () => ({ response: { token: 'admin-token' }, role: 'admin' })
+        };
+      } else if (contact.email === 'user@example.com' && contact.password === 'user') {
+        return {
+          ok: true,
+          json: async () => ({ response: { token: 'user-token' }, role: 'user' })
+        };
+      } else {
+        return { ok: false, status: 401 };
+      }
+    };
+  
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(contact),
-        credentials: 'include', // Include cookies in the request
-      });
-
+      const response = await mockFetch();
+  
       if (!response.ok) {
         if (response.status === 401) {
           setErrorMessage("Invalid credentials. Please try again.");
@@ -40,10 +56,10 @@ const LoginForm: React.FC = (): JSX.Element => {
         }
         throw new Error('HTTP error');
       }
-
+  
       const data = await response.json();
-      setToken(data.response.token); 
-
+      setToken(data.response.token);
+  
       if (data.role === 'admin') {
         router.push("/admin");
         console.log("Welcome admin");
@@ -51,13 +67,13 @@ const LoginForm: React.FC = (): JSX.Element => {
         router.push("/menu");
         console.log("Login success");
       }
-
     } catch (error) {
       console.error("Authentication failed:", error);
       setToken(null);
       setErrorMessage(error instanceof Error ? error.message : "An unexpected error occurred. Please try again.");
     }
   };
+  
 
   return (
     <Card color="transparent" shadow={false}>
