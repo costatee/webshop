@@ -1,7 +1,7 @@
-import React, { useState, useContext, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { AuthContext } from '../lib/AuthContext';
+import { useAuth } from '../lib/AuthContext';
 import { Card, Input, Button, Typography } from '@material-tailwind/react';
 
 interface Contact {
@@ -10,22 +10,20 @@ interface Contact {
 }
 
 const LoginForm: React.FC = (): JSX.Element => {
-  const router = useRouter(); 
+  const router = useRouter();
   const [contact, setContact] = useState<Contact>({ email: '', password: '' });
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); 
-  const { setToken } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { setToken } = useAuth();
 
-  // Mock login function
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
-    setContact(prevState => ({ ...prevState, [name]: value }));
+    setContact((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     console.log(contact.email, contact.password);
-  
-    // Define the mock fetch function with appropriate types
+
     const mockFetch = async (): Promise<
       | { ok: true; json: () => Promise<{ response: { token: string }; role: string }> }
       | { ok: false; status: number; json?: undefined }
@@ -44,10 +42,10 @@ const LoginForm: React.FC = (): JSX.Element => {
         return { ok: false, status: 401 };
       }
     };
-  
+
     try {
       const response = await mockFetch();
-  
+
       if (!response.ok) {
         if (response.status === 401) {
           setErrorMessage("Invalid credentials. Please try again.");
@@ -56,10 +54,10 @@ const LoginForm: React.FC = (): JSX.Element => {
         }
         throw new Error('HTTP error');
       }
-  
+
       const data = await response.json();
       setToken(data.response.token);
-  
+
       if (data.role === 'admin') {
         router.push("/admin");
         console.log("Welcome admin");
@@ -73,7 +71,6 @@ const LoginForm: React.FC = (): JSX.Element => {
       setErrorMessage(error instanceof Error ? error.message : "An unexpected error occurred. Please try again.");
     }
   };
-  
 
   return (
     <Card color="transparent" shadow={false}>
