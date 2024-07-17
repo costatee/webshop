@@ -74,7 +74,6 @@ export const BasketCard: React.FC<CardProps> = ({
   id,
   imageUrl,
   title,
-  description,
   price,
   quantity,
 }) => {
@@ -93,12 +92,12 @@ export const BasketCard: React.FC<CardProps> = ({
 
   return (
     <Card className="w-full max-w-[48rem] flex flex-row items-center shadow-lg gap-2 p-4 rounded-xl">
-      <Link href={`/menu/${slugify(title)}`} key={id}>
         <CardHeader
           shadow={false}
           floated={false}
           className="w-1/3 shrink-0 rounded-lg overflow-hidden"
         >
+          <Link href={`/menu/${slugify(title)}`} key={id}>
           <Image
             src={imageUrl}
             alt="card-image"
@@ -106,14 +105,15 @@ export const BasketCard: React.FC<CardProps> = ({
             layout="responsive"
             width={300}
             height={200}
-          />
+            />
+          </Link>
         </CardHeader>
         <CardBody className="w-2/3 pl-4">
           <Typography variant="h6" color="gray" className="uppercase">
             {title}
           </Typography>
           <Typography variant="h4" color="blue-gray" className="mb-2">
-            ${price}
+            ${price * quantity}
           </Typography>
           <div className="flex items-center mb-4">
             <Typography variant="paragraph" color="blue-gray" className="mr-2">
@@ -124,12 +124,11 @@ export const BasketCard: React.FC<CardProps> = ({
               value={quantity}
               min="1"
               className="w-20"
-              onChange={(e) => {}}
+              onChange={(e) => {handleQuantityChange(e)}}
               crossOrigin={undefined}
             />
           </div>
         </CardBody>
-      </Link>
       <CardFooter className="ml-auto">
         <Button type="button" color="red" onClick={handleRemoveFromBasket}>
           Remove

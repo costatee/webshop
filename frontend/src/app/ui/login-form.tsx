@@ -59,7 +59,7 @@ const LoginForm: React.FC = (): JSX.Element => {
       setToken(data.response.token);
 
       if (data.role === 'admin') {
-        router.push("/admin");
+        router.push("/menu");
         console.log("Welcome admin");
       } else {
         router.push("/menu");

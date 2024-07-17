@@ -1,12 +1,7 @@
 "use client"
 
-import React, { createContext, useState, useContext, ReactNode } from 'react';
-
-// Define the shape of the AuthContext
-interface AuthContextType {
-  token: string | null;
-  setToken: (token: string | null) => void;
-}
+import React, { createContext, useState, useEffect, ReactNode, useContext } from 'react';
+import { AuthContextType } from './definitions';
 
 // Create the AuthContext
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -17,7 +12,16 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [token, setToken] = useState<string | null>(null);
+    const [token, setToken] = useState<string | null>(() => {
+      return localStorage.getItem('token') || null;
+    });
+  
+    useEffect(() => {
+      const storedToken = localStorage.getItem('token');
+      if (storedToken) {
+        setToken(storedToken);
+      }
+    }, []);
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>

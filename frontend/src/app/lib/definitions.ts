@@ -14,7 +14,7 @@ export interface ProductProps {
     description?: string;
     price: number;
     buttonText: string;
-    quantity?: number;
+    quantity: number;
   }
 
   export interface NavLinkProps {
@@ -29,4 +29,9 @@ export interface ProductProps {
   export interface MaterialIconProps {
     iconClass: string;
     iconTitle: string;
+  }
+
+  export interface AuthContextType {
+    token: string | null;
+    setToken: (token: string | null) => void;
   }

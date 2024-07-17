@@ -45,7 +45,7 @@ const AccountMenu: React.FC = () => (
       alt="avatar"
       size="sm"
     />
-    <Link href="/basket" className="text-white">Basket</Link>
+    <Link href="/basket" className="text-white"><Typography variant="small">Basket</Typography></Link>
   </div>
 );
 
