@@ -213,7 +213,7 @@ export const TopFiveRamen: React.FC = () => {
                   <div key={data.id} className="inline-block w-full md:w-auto flex-shrink-0">
                       <CardDefault
                           id={data.id} 
-                          price={0}
+                          price={data.price}
                           imageUrl={data.imageUrl}
                           title={data.title}
                           description={data.description}
