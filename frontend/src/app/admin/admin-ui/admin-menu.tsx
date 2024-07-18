@@ -4,8 +4,6 @@ import { Typography } from "@material-tailwind/react";
 import 'material-symbols';
 import Link from "next/link";
 import { useState } from "react";
-import Search from "../../ui/search";
-import { Suspense } from "react";
 
 
 export function AdminMenu(): JSX.Element {
@@ -19,9 +17,7 @@ export function AdminMenu(): JSX.Element {
     return (
         <div className="relative flex flex-col w-70 items-start m-10 gap-6 text-black">
             <div className="w-60">
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Search placeholder="Search" />
-                </Suspense>
+ {/* here goes search component */}
             </div>
             <div className="flex">
                 <span className="material-symbols-outlined mr-4">home</span>
@@ -103,9 +99,8 @@ export function AdminMenuMobile(): JSX.Element {
     return (
         <div className="flex flex-wrap items-start mt-10 mb-5 mx-8 gap-3 text-black">
             <div className="w-full px-2 pb-2">
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Search placeholder="Search" />
-                </Suspense>
+ {/* here goes search component */}
+
             </div>
             <div className="flex">
                 <span className="material-symbols-outlined ml-2 mr-0.5">home</span>

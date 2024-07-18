@@ -4,7 +4,7 @@ import React, { createContext, useState, useEffect, ReactNode, useContext } from
 import { AuthContextType } from './definitions';
 
 // Create the AuthContext
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Define the props for the AuthProvider
 interface AuthProviderProps {
