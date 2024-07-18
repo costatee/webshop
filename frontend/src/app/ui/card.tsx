@@ -15,6 +15,7 @@ import { useBasket } from "../lib/BasketContext";
 import { slugify } from "../lib/utils";
 import { CardProps } from "../lib/definitions";
 
+// Default Vertical Card component
 export const CardDefault: React.FC<CardProps> = ({
   id,
   imageUrl,
@@ -50,13 +51,13 @@ export const CardDefault: React.FC<CardProps> = ({
           <Typography variant="h5" color="blue-gray" className="mb-2">
             {title}
           </Typography>
-          <Typography variant="paragraph" className="min-h-[5rem] md:min-h-[6.5rem] lg:min-h-[3rem]">
+          <Typography variant="paragraph" className="h-[3rem] md:h-[5.5rem] lg:h-[5rem]">
             {description}
           </Typography>
         </CardBody>
       </Link>
       <CardFooter className="block">
-        <Typography variant="h6" color="blue-gray" className="mb-2">
+        <Typography variant="h6" color="blue-gray" className="text-[1.3rem] mb-2">
           ${price.toFixed(2)}
         </Typography>
         <Button fullWidth={true} onClick={handleAddToBasket}>
@@ -67,26 +68,36 @@ export const CardDefault: React.FC<CardProps> = ({
   );
 };
 
+// Basket Card component
+// Basket Card component
 export const BasketCard: React.FC<CardProps> = ({
   id,
   imageUrl,
   title,
-  description,
   price,
   quantity,
 }) => {
+  const { removeFromBasket, updateBasketItemQuantity } = useBasket();
+
   const handleRemoveFromBasket = () => {
-    console.log(id);
+    removeFromBasket(id);
+  };
+
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newQuantity = parseInt(e.target.value, 10);
+    if (newQuantity > 0) {
+      updateBasketItemQuantity(id, newQuantity);
+    }
   };
 
   return (
     <Card className="w-full max-w-[48rem] flex flex-row items-center shadow-lg gap-2 p-4 rounded-xl">
-      <Link href={`/menu/${slugify(title)}`} key={id}>
         <CardHeader
           shadow={false}
           floated={false}
           className="w-1/3 shrink-0 rounded-lg overflow-hidden"
         >
+          <Link href={`/menu/${slugify(title)}`} key={id}>
           <Image
             src={imageUrl}
             alt="card-image"
@@ -94,14 +105,15 @@ export const BasketCard: React.FC<CardProps> = ({
             layout="responsive"
             width={300}
             height={200}
-          />
+            />
+          </Link>
         </CardHeader>
         <CardBody className="w-2/3 pl-4">
           <Typography variant="h6" color="gray" className="uppercase">
             {title}
           </Typography>
           <Typography variant="h4" color="blue-gray" className="mb-2">
-            ${price}
+            ${price * quantity}
           </Typography>
           <div className="flex items-center mb-4">
             <Typography variant="paragraph" color="blue-gray" className="mr-2">
@@ -112,12 +124,11 @@ export const BasketCard: React.FC<CardProps> = ({
               value={quantity}
               min="1"
               className="w-20"
-              onChange={(e) => {}}
+              onChange={(e) => {handleQuantityChange(e)}}
               crossOrigin={undefined}
             />
           </div>
         </CardBody>
-      </Link>
       <CardFooter className="ml-auto">
         <Button type="button" color="red" onClick={handleRemoveFromBasket}>
           Remove

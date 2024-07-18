@@ -1,7 +1,7 @@
-import React, { useState, useContext, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { AuthContext } from '../lib/AuthContext';
+import { useAuth } from '../lib/AuthContext';
 import { Card, Input, Button, Typography } from '@material-tailwind/react';
 
 interface Contact {
@@ -10,27 +10,41 @@ interface Contact {
 }
 
 const LoginForm: React.FC = (): JSX.Element => {
-  const router = useRouter(); 
+  const router = useRouter();
+  const { setToken } = useAuth();
   const [contact, setContact] = useState<Contact>({ email: '', password: '' });
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); 
-  const { setToken } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
-    setContact(prevState => ({ ...prevState, [name]: value }));
+    setContact((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     console.log(contact.email, contact.password);
 
+    const mockFetch = async (): Promise<
+      | { ok: true; json: () => Promise<{ response: { token: string }; role: string }> }
+      | { ok: false; status: number; json?: undefined }
+    > => {
+      if (contact.email === 'asd@asd.com' && contact.password === 'asd') {
+        return {
+          ok: true,
+          json: async () => ({ response: { token: 'admin-token' }, role: 'admin' })
+        };
+      } else if (contact.email === 'user@example.com' && contact.password === 'user') {
+        return {
+          ok: true,
+          json: async () => ({ response: { token: 'user-token' }, role: 'user' })
+        };
+      } else {
+        return { ok: false, status: 401 };
+      }
+    };
+
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(contact),
-        credentials: 'include', // Include cookies in the request
-      });
+      const response = await mockFetch();
 
       if (!response.ok) {
         if (response.status === 401) {
@@ -42,16 +56,15 @@ const LoginForm: React.FC = (): JSX.Element => {
       }
 
       const data = await response.json();
-      setToken(data.response.token); 
+      setToken(data.response.token);
 
       if (data.role === 'admin') {
-        router.push("/admin");
+        router.push("/menu");
         console.log("Welcome admin");
       } else {
         router.push("/menu");
         console.log("Login success");
       }
-
     } catch (error) {
       console.error("Authentication failed:", error);
       setToken(null);
@@ -110,6 +123,9 @@ const LoginForm: React.FC = (): JSX.Element => {
           <Link href="/register" className="font-medium text-gray-900">
             Register
           </Link>
+        </Typography>
+        <Typography color="gray" className="mt-4 text-center font-normal">
+          Demo: hello@attila.com / 123456
         </Typography>
       </form>
     </Card>

@@ -3,17 +3,16 @@
 import PromoBar from "../ui/promo-bar";
 import MenuBar from "../ui/menubar";
 import { BasketDisplay } from "../ui/basket-display";
+import { BBreadcrumbs } from '../ui/breadcrumbs';
 
 export default function Basket(): JSX.Element {
 
   return (
-    <main className="flex flex-1 flex-col items-center gap-10 px-20">
-      <PromoBar />
-      <MenuBar /> 
-
-      <div className="flex flex-col w-auto rounded-xl bg-[#FAFAFA] items-center justify-center py-8 px-10 mt-10 shadow-xl">
-        <BasketDisplay />
-      </div>
-    </main>
+  <main className="flex flex-1 flex-col w-full max-w-[1200px] rounded-xl gap-10 p-10 bg-[#FAFAFA] items-center justify-center">
+    <BBreadcrumbs />
+    <div className="flex flex-col m-1 w-full gap-2 md:gap-5 md:flex-row">
+      <BasketDisplay />
+    </div>
+  </main>
   );
 }

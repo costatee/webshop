@@ -40,7 +40,7 @@ export default function Offers(): JSX.Element {
           <OfferCard
             id={"3"}
             imageUrl={"/sushi/sushi7.jpg"}
-            title={"Spend more then €30 to get 10% off"}
+            title={"Spend €30 to get 10% off"}
             description={
               "Get 10% off on any of our sushi for €30 or more. Not valid to combine with any other offer."
             }

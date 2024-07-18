@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
@@ -13,6 +13,8 @@ interface BasketItem {
 interface BasketContextType {
   basket: BasketItem[];
   addToBasket: (item: BasketItem) => void;
+  removeFromBasket: (id: string) => void;
+  updateBasketItemQuantity: (id: string, newQuantity: number) => void;
 }
 
 const BasketContext = createContext<BasketContextType | undefined>(undefined);
@@ -38,7 +40,6 @@ export const BasketProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     localStorage.setItem('basket', JSON.stringify(basket));
   }, [basket]);
 
-
   const addToBasket = (item: BasketItem) => {
     setBasket((prevBasket) => {
       const existingItem = prevBasket.find((basketItem) => basketItem.id === item.id);
@@ -53,8 +54,28 @@ export const BasketProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     });
   };
 
+  const removeFromBasket = (id: string) => {
+    setBasket((prevBasket) => prevBasket.filter((item) => item.id !== id));
+  };
+
+  const updateBasketItemQuantity = (id: string, newQuantity: number) => {
+    setBasket((prevBasket) =>
+      prevBasket.map((item) =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
+
+  // Basket context value with functions defined
+  const basketContextValue: BasketContextType = {
+    basket,
+    addToBasket,
+    removeFromBasket,
+    updateBasketItemQuantity,
+  };
+
   return (
-    <BasketContext.Provider value={{ basket, addToBasket }}>
+    <BasketContext.Provider value={basketContextValue}>
       {children}
     </BasketContext.Provider>
   );
