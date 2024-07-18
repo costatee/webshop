@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export const Opening: React.FC = (): JSX.Element => {
     return (
-        <div className="w-screen bg-[#FAFAFA] h-[40vh] flex">
+        <div className="w-screen max-w-[1440px] bg-[#FAFAFA] h-[40vh] flex">
             <div className="flex w-[50vw]">
                 <ul className="flex flex-col p-8 text-gray-900 text-[0.85rem] md:text-[1.2rem]">
                     <li className="md:text-[1.7rem] text-[1.1rem] text-gray-800 mb-1">Opening hours</li>
