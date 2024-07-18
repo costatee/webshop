@@ -8,11 +8,11 @@ import { BBreadcrumbs } from '../ui/breadcrumbs';
 export default function Basket(): JSX.Element {
 
   return (
-  <div className="flex flex-col w-full max-w-[1200px] rounded-xl gap-10 p-10 bg-[#FAFAFA] items-center justify-center">
+  <main className="flex flex-1 flex-col w-full max-w-[1200px] rounded-xl gap-10 p-10 bg-[#FAFAFA] items-center justify-center">
     <BBreadcrumbs />
     <div className="flex flex-col m-1 w-full gap-2 md:gap-5 md:flex-row">
       <BasketDisplay />
     </div>
-  </div>
+  </main>
   );
 }

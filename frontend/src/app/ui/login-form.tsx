@@ -11,9 +11,9 @@ interface Contact {
 
 const LoginForm: React.FC = (): JSX.Element => {
   const router = useRouter();
+  const { setToken } = useAuth();
   const [contact, setContact] = useState<Contact>({ email: '', password: '' });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { setToken } = useAuth();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
@@ -123,6 +123,9 @@ const LoginForm: React.FC = (): JSX.Element => {
           <Link href="/register" className="font-medium text-gray-900">
             Register
           </Link>
+        </Typography>
+        <Typography color="gray" className="mt-4 text-center font-normal">
+          Demo: hello@attila.com / 123456
         </Typography>
       </form>
     </Card>

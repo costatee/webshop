@@ -1,27 +1,36 @@
 "use client"
 
-import React, { createContext, useState, useEffect, ReactNode, useContext } from 'react';
-import { AuthContextType } from './definitions';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-// Create the AuthContext
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-// Define the props for the AuthProvider
-interface AuthProviderProps {
-  children: ReactNode;
+interface AuthContextType {
+  token: string | null;
+  setToken: (token: string | null) => void;
 }
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-    const [token, setToken] = useState<string | null>(() => {
-      return localStorage.getItem('token') || null;
-    });
-  
-    useEffect(() => {
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export const AuthProvider = ({ children }: { children: ReactNode }): JSX.Element => {
+  const [token, setTokenState] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
       const storedToken = localStorage.getItem('token');
       if (storedToken) {
-        setToken(storedToken);
+        setTokenState(storedToken);
       }
-    }, []);
+    }
+  }, []);
+
+  const setToken = (token: string | null) => {
+    setTokenState(token);
+    if (typeof window !== 'undefined') {
+      if (token) {
+        localStorage.setItem('token', token);
+      } else {
+        localStorage.removeItem('token');
+      }
+    }
+  };
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>
@@ -30,7 +39,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   );
 };
 
-// Custom hook to use the AuthContext
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context) {

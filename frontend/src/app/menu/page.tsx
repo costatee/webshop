@@ -21,7 +21,7 @@ export default function Menu(): JSX.Element {
   };
 
   return (
-    <main className="relative w-full lg:max-w-[1440px]">
+    <main className="relative w-[80vw] lg:max-w-[1440px]">
       <div className="w-full flex flex-col rounded-lg md:rounded-xl bg-[#FAFAFA] items-center justify-center pb-6 px-4">
         <p className="relative w-full text-center text-[2rem] mt-8">Our menu</p>
         <p className="relative w-full text-center font-light text-sm mb-4 md:mb-8 opacity-80">

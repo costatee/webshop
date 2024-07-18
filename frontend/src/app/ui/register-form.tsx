@@ -1,6 +1,6 @@
-import React, { useState, useContext, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import Link from "next/link";
-import { AuthContext } from "../lib/AuthContext";
+import { useAuth } from "../lib/AuthContext";
 import {
   Card,
   Input,
@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 
 export function RegisterForm(): JSX.Element {
   const router = useRouter();
+  const { setToken } = useAuth();
   const [contact, setContact] = useState<{
     name: string;
     email: string;
@@ -24,7 +25,6 @@ export function RegisterForm(): JSX.Element {
     rePassword: "",
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { setToken } = useContext(AuthContext);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

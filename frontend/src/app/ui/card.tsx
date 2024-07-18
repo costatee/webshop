@@ -51,13 +51,13 @@ export const CardDefault: React.FC<CardProps> = ({
           <Typography variant="h5" color="blue-gray" className="mb-2">
             {title}
           </Typography>
-          <Typography variant="paragraph" className="min-h-[5rem] md:min-h-[6.5rem] lg:min-h-[3rem]">
+          <Typography variant="paragraph" className="h-[3rem] md:h-[5.5rem] lg:h-[5rem]">
             {description}
           </Typography>
         </CardBody>
       </Link>
       <CardFooter className="block">
-        <Typography variant="h6" color="blue-gray" className="mb-2">
+        <Typography variant="h6" color="blue-gray" className="text-[1.3rem] mb-2">
           ${price.toFixed(2)}
         </Typography>
         <Button fullWidth={true} onClick={handleAddToBasket}>

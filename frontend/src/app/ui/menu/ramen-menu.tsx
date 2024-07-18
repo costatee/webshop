@@ -8,6 +8,7 @@ export interface CardData {
   description: string;
   buttonText: string;
   price: number;
+  quantity?: number;
 }
 
 export const ramenMenuData: CardData[] = [
@@ -193,6 +194,7 @@ export const AllRamen: React.FC<AllRamenProps> = ({ filteredData }) => {
               title={data.title}
               description={data.description}
               buttonText={data.buttonText}
+              quantity={0}
             />
           ))
         ) : (
@@ -216,6 +218,7 @@ export const TopFiveRamen: React.FC = () => {
                           title={data.title}
                           description={data.description}
                           buttonText={data.buttonText} 
+                          quantity={0}
                       />
                   </div>
               ))}

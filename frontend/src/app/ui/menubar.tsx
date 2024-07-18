@@ -38,14 +38,14 @@ const UserSection: React.FC<UserSectionProps> = ({ token }) => (
 );
 
 const AccountMenu: React.FC = () => (
-  <div className="flex items-center justify-center px-4 py-2 rounded-full bg-[#03081F]">
-    <Avatar
-      className="mr-2"
-      src="/male_user_icon.png"
-      alt="avatar"
-      size="sm"
-    />
-    <Link href="/basket" className="text-white"><Typography variant="small">Basket</Typography></Link>
+  <div className="flex items-center justify-center px-5 py-2 rounded-full bg-[#03081F]">
+      <Avatar
+        className="mr-2"
+        src="/male_user_icon.png"
+        alt="avatar"
+        size="sm"
+      />
+    <Link href="/basket" className="text-white"><p className=" text-[1.2rem]">Basket</p></Link>
   </div>
 );
 
@@ -64,7 +64,7 @@ const MenuBar: React.FC = (): JSX.Element => {
           <MaterialIcon iconClass='material-symbols-outlined' iconTitle='menu' />
         </button>
         <Link href="/">
-          <Typography variant="h1" className="text-2xl font-bold text-black mr-auto ml-2">Logo</Typography>
+          <Typography variant="h1" className="text-2xl font-bold text-black mr-auto ml-2 px-2">水</Typography>
         </Link>
         <div className='ml-auto mt-1.5'>
           <Link href="/favourites">
@@ -96,7 +96,7 @@ const MenuBar: React.FC = (): JSX.Element => {
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center px-4 py-2">
         <Link href="/">
-          <Typography variant="h1" className="hidden md:block font-bold text-black">Logo</Typography>
+          <Typography variant="h1" className="hidden md:block font-bold text-black px-10">水</Typography>
         </Link>
         <ul className="ml-auto flex gap-4 lg:gap-10 md:gap-3 lg:text-lg items-center text-black">
           <NavLink href="/menu">Menu</NavLink>
